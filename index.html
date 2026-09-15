@@ -112,11 +112,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
 .cal-grid .cal-hdr{font-size:8px;text-transform:uppercase;color:var(--muted);font-weight:600;padding:4px 0;letter-spacing:.3px}
 .cal-grid .cal-day{padding:5px 0;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:.12s;background:transparent;color:var(--muted);border:1px solid transparent}
-.cal-grid .cal-day:hover{background:var(--card2);border-color:var(--border)}
+.cal-grid .cal-day:hover{background:var(--card2);border-color:var(--accent);transform:scale(1.1)}
 .cal-grid .cal-day.today{color:var(--accent);border-color:var(--accent);font-weight:800}
 .cal-grid .cal-day.past{color:var(--muted);opacity:.4}
 .cal-grid .cal-day.future{color:var(--text)}
 .cal-grid .cal-day.od-active{background:linear-gradient(135deg,#ff5e7a20,#ff00ff20);border-color:var(--accent2);box-shadow:0 0 8px var(--accent2)}
+.cal-grid .cal-day.fullmark{background:var(--green);border-color:var(--green-lt);color:var(--green-lt);font-weight:700}
 .cal-grid .cal-day.empty{cursor:default}
 
 /* ── THE GRID ── */
@@ -438,7 +439,9 @@ function renderCalendar(){
   for(let d=1;d<=dInM;d++){
     const dds=ds(y,m,d),isT=dds===today
     const w=Math.floor((d-1+fDay)/7)
-    const cls=`cal-day${isT?' today':d<=new Date().getDate()&&m===new Date().getMonth()&&y===new Date().getFullYear()?' past':d>new Date().getDate()||m!==new Date().getMonth()?' future':''}${w===overdriveWeek?' od-active':''}`
+    // Check if all habits done this day
+    const doneCount=data.filter(h=>(h.d||[]).includes(dds)).length
+    const cls=`cal-day${isT?' today':''}${w===overdriveWeek?' od-active':''}${doneCount===data.length&&data.length>0?' fullmark':''}`
     html+=`<div class="${cls}" onclick="if(${d}<=${dInM})navToDay(${d})">${d}</div>`
   }
   document.getElementById('calGrid').innerHTML=html
@@ -446,11 +449,15 @@ function renderCalendar(){
 }
 
 function navToDay(d){
-  // Highlight the day in the grid by scrolling to it
-  const cells=document.querySelectorAll('.g-cell')
-  const idx=d-1
-  // Just a visual feedback - can't scroll easily, but we can toast
-  toast(`📅 Day ${d}`)
+  const dds=ds(y,m,d)
+  // Toggle all habits for this day
+  let count=0
+  for(const h of data){
+    if(!h.d)h.d=[]
+    const j=h.d.indexOf(dds)
+    if(j>-1){h.d.splice(j,1)}else{h.d.push(dds);count++}
+  }
+  save();render();toast( count>0 ? `✅ Day ${d} marked for ${count} habits` : `↩️ Day ${d} unchecked` )
 }
 
 function toggleOverdrive(){
