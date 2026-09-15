@@ -32,47 +32,37 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .top .controls .nav-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:16px;transition:.15s;display:grid;place-items:center}
 .top .controls .nav-btn:hover{border-color:var(--accent)}
 
-/* ── DASHBOARD GRID ── */
+/* ── DASHBOARD ── */
 .dash{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
 .dash .panel{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .dash .panel .title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:10px}
-
-/* ── DONUT ── */
 .donut-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0}
 .donut{width:80px;height:80px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-.donut-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--green) 0deg 0deg, var(--border) 0deg 360deg);transition:background .3s}
+.donut-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--green) 0deg 0deg,var(--border) 0deg 360deg);transition:background .3s}
 .donut-inner{width:52px;height:52px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--green);z-index:1}
 .donut-label{font-size:11px;color:var(--muted);margin-top:4px}
-
-/* ── SCOREBOARD ── */
 .scoreboard{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
 .score-item{text-align:center;padding:8px;background:var(--card2);border-radius:8px}
-.score-item .num{font-size:20px;font-weight:800;color:var(--accent2);transition:all .3s}
+.score-item .num{font-size:20px;font-weight:800;color:var(--accent2)}
 .score-item .lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-
-/* ── BAR CHART ── */
 .bar-chart{display:flex;align-items:flex-end;gap:2px;height:80px;padding:0 2px}
-.bar{flex:1;border-radius:3px 3px 0 0;min-height:2px;display:flex;flex-direction:column;align-items:center;position:relative}
+.bar{flex:1;min-height:2px;display:flex;flex-direction:column;align-items:center}
 .bar .fill{width:100%;border-radius:3px 3px 0 0;transition:height .4s;min-height:2px}
 .bar .label{font-size:6px;color:var(--muted);margin-top:3px}
 .sub-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
 .sub-stat{text-align:center;padding:6px;background:var(--card2);border-radius:8px}
 .sub-stat .v{font-size:16px;font-weight:800;color:var(--accent2)}
-.sub-stat .l{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:1px}
-
-/* ── TOP HABITS ── */
+.sub-stat .l{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .top-list{display:flex;flex-direction:column;gap:6px}
 .top-item{display:flex;align-items:center;gap:8px}
-.top-item .rank{font-size:10px;font-weight:700;color:var(--muted);width:16px;text-align:right;flex-shrink:0}
-.top-item .name{font-size:11px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-item .rank{font-size:10px;font-weight:700;color:var(--muted);width:16px;flex-shrink:0;text-align:right}
+.top-item .name{font-size:11px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .top-item .tbar{flex:1;height:6px;background:var(--card2);border-radius:4px;overflow:hidden;max-width:100px}
 .top-item .tfill{height:100%;border-radius:4px;background:var(--green);transition:width .4s}
 .top-item .tpct{font-size:10px;color:var(--muted);width:30px;text-align:right;flex-shrink:0}
 
-/* ── MIDDLE ROW ── */
+/* ── MIDDLE ── */
 .mid{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px}
-
-/* ── WEEKLY OVERVIEW ── */
 .weekly{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .weekly .title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:12px}
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
@@ -82,17 +72,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .week-day.done{background:linear-gradient(135deg,var(--card2),#1a3a2a);border-color:var(--green-lt)}
 .week-day.done .wn{color:var(--green-lt)}
 .week-day.today{border-color:var(--accent)}
-
-/* ── RECENT ── */
 .recent{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .recent .title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:10px}
 .recent-list{display:flex;flex-direction:column;gap:4px}
 .recent-item{display:flex;align-items:center;gap:8px;font-size:11px;padding:5px 0;border-bottom:1px solid var(--border)}
 .recent-item:last-child{border-bottom:none}
-.recent-item .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.recent-item .rdot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
 .recent-item .rdate{color:var(--muted);min-width:40px;font-weight:600}
 
-/* ── ADD HABIT ── */
+/* ── TOOLBAR ── */
 .toolbar{display:flex;gap:8px;margin-bottom:12px;margin-top:12px;flex-wrap:wrap}
 .toolbar input{flex:1;min-width:150px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
 .toolbar input:focus{border-color:var(--accent)}
@@ -102,9 +90,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .toolbar .btn-sec:hover{border-color:var(--accent)}
 .toolbar .btn-danger{color:var(--accent);border-color:rgba(233,69,96,.3)}
 .toolbar .btn-danger:hover{background:rgba(233,69,96,.1);border-color:var(--accent)}
-.toolbar .btn-overdrive{background:linear-gradient(135deg,#ff00ff20,#ff5e7a20);border:1px solid var(--accent2);color:var(--accent2);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:.2s;font-weight:700;text-shadow:0 0 8px var(--accent2)}
+.toolbar .btn-overdrive{background:linear-gradient(135deg,#ff00ff20,#ff5e7a20);border:1px solid var(--accent2);color:var(--accent2);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:.2s;font-weight:700}
 .toolbar .btn-overdrive.active{background:linear-gradient(135deg,#ff00ff40,#ff5e7a40);border-color:#ff00ff;color:#ff00ff;box-shadow:0 0 12px #ff00ff40}
-.toolbar .btn-overdrive:hover{transform:scale(1.03)}
 
 /* ── MINI CALENDAR ── */
 .cal-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;overflow:hidden}
@@ -114,8 +101,6 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .cal-grid .cal-day{padding:5px 0;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:.12s;background:transparent;color:var(--muted);border:1px solid transparent}
 .cal-grid .cal-day:hover{background:var(--card2);border-color:var(--accent);transform:scale(1.1)}
 .cal-grid .cal-day.today{color:var(--accent);border-color:var(--accent);font-weight:800}
-.cal-grid .cal-day.past{color:var(--muted);opacity:.4}
-.cal-grid .cal-day.future{color:var(--text)}
 .cal-grid .cal-day.od-active{background:linear-gradient(135deg,#ff5e7a20,#ff00ff20);border-color:var(--accent2);box-shadow:0 0 8px var(--accent2)}
 .cal-grid .cal-day.fullmark{background:var(--green);border-color:var(--green-lt);color:var(--green-lt);font-weight:700}
 .cal-grid .cal-day.empty{cursor:default}
@@ -129,10 +114,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .grid-wrap td:first-child,.grid-wrap th:first-child{text-align:left;padding-left:12px;position:sticky;left:0;z-index:3;min-width:130px;background:var(--card);font-size:11px;font-weight:500}
 .grid-wrap tr:nth-child(even) td{background:rgba(255,255,255,.012)}
 .grid-wrap tr:nth-child(even) td:first-child{background:var(--card)}
-
-/* Week bands on header */
 .grid-wrap .wk1{background:#ff5e7a}.grid-wrap .wk2{background:#a855f7}.grid-wrap .wk3{background:#3b82f6}.grid-wrap .wk4{background:#eab308;color:#111}.grid-wrap .wk5{background:#22c55e}
-
 .g-cell{border-radius:5px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;font-weight:600;background:var(--bg);border:1.5px solid var(--border);transition:all .12s;margin:1px;width:26px;height:26px}
 .g-cell:hover{border-color:var(--accent);transform:scale(1.12)}
 .g-cell.done{background:var(--green);border-color:var(--green-lt);color:var(--green-lt)}
@@ -147,14 +129,36 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .g-del{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;opacity:0;padding:2px;transition:.15s;font-family:'Inter',sans-serif;width:20px}
 .grid-wrap tr:hover .g-del{opacity:.4}
 .g-del:hover{color:var(--accent)!important;opacity:1!important}
-
-/* ── EMPTY ── */
 .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
 .empty .big{font-size:40px;margin-bottom:12px}
 
 /* ── TOAST ── */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--card);color:var(--text);padding:10px 20px;border-radius:10px;border:1px solid var(--border);font-size:12px;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
 .toast.show{opacity:1}
+
+/* ── DAY MODAL ── */
+.modal-overlay{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.6);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.modal-overlay.open{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);max-width:450px;width:90%;max-height:80vh;overflow-y:auto;padding:24px;box-shadow:0 8px 40px rgba(0,0,0,.5)}
+.modal h2{font-size:18px;font-weight:700;margin-bottom:4px}
+.modal .sub{font-size:12px;color:var(--muted);margin-bottom:16px}
+.modal .close{float:right;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:0 4px}
+.modal .close:hover{color:var(--accent)}
+.modal .day-tog-all{background:var(--accent);border:none;border-radius:8px;padding:10px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;width:100%;margin-bottom:16px;transition:.2s}
+.modal .day-tog-all:hover{background:var(--accent2)}
+.modal .habit-check{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
+.modal .habit-check:last-child{border-bottom:none}
+.modal .hc-dot{width:18px;height:18px;border-radius:4px;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;transition:.15s;flex-shrink:0;display:grid;place-items:center}
+.modal .hc-dot.checked{background:var(--green);border-color:var(--green-lt)}
+.modal .hc-dot.checked::after{content:'✓';color:var(--green-lt);font-size:10px;font-weight:700}
+.modal .hc-name{flex:1}
+.modal .hc-str{font-size:10px;color:var(--accent2);font-weight:600}
+
+/* Day note */
+.modal .day-note{margin-top:16px;padding-top:16px;border-top:1px solid var(--border)}
+.modal .day-note label{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;display:block;margin-bottom:6px}
+.modal .day-note textarea{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif;resize:vertical;min-height:60px}
+.modal .day-note textarea:focus{border-color:var(--accent)}
 
 @media(max-width:900px){.dash{grid-template-columns:1fr}.mid{grid-template-columns:1fr}.top{flex-direction:column;gap:12px}}
 </style>
@@ -174,43 +178,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 
 <div class="dash">
-  <div class="panel">
-    <div class="title">📊 OVERALL PROGRESS</div>
-    <div class="donut-wrap">
-      <div class="donut"><div class="donut-ring" id="donutRing"></div><div class="donut-inner" id="donutPct">0%</div></div>
-      <div class="donut-label">this month</div>
-    </div>
-    <div class="scoreboard">
-      <div class="score-item"><div class="num" id="completed">0</div><div class="lbl">done</div></div>
-      <div class="score-item"><div class="num" id="totalGoal">0</div><div class="lbl">total</div></div>
-      <div class="score-item"><div class="num" id="leftCount">0</div><div class="lbl">left</div></div>
-    </div>
+  <div class="panel"><div class="title">📊 OVERALL PROGRESS</div>
+    <div class="donut-wrap"><div class="donut"><div class="donut-ring" id="donutRing"></div><div class="donut-inner" id="donutPct">0%</div></div><div class="donut-label">this month</div></div>
+    <div class="scoreboard"><div class="score-item"><div class="num" id="completed">0</div><div class="lbl">done</div></div><div class="score-item"><div class="num" id="totalGoal">0</div><div class="lbl">total</div></div><div class="score-item"><div class="num" id="leftCount">0</div><div class="lbl">left</div></div></div>
   </div>
-
-  <div class="panel">
-    <div class="title">📈 WEEKLY TREND</div>
-    <div class="bar-chart" id="barChart"></div>
-    <div class="sub-stats">
-      <div class="sub-stat"><div class="v" id="bestDay">—</div><div class="l">🔥 streak</div></div>
-      <div class="sub-stat"><div class="v" id="avgDay">0</div><div class="l">avg/day</div></div>
-    </div>
+  <div class="panel"><div class="title">📈 WEEKLY TREND</div><div class="bar-chart" id="barChart"></div>
+    <div class="sub-stats"><div class="sub-stat"><div class="v" id="bestDay">—</div><div class="l">🔥 streak</div></div><div class="sub-stat"><div class="v" id="avgDay">0</div><div class="l">avg/day</div></div></div>
   </div>
-
-  <div class="panel">
-    <div class="title">🏆 TOP HABITS</div>
-    <div class="top-list" id="topHabits"><div style="color:var(--muted);font-size:11px;padding:12px;text-align:center">No data</div></div>
-  </div>
+  <div class="panel"><div class="title">🏆 TOP HABITS</div><div class="top-list" id="topHabits"><div style="color:var(--muted);font-size:11px;padding:12px;text-align:center">No data</div></div></div>
 </div>
 
 <div class="mid">
-  <div class="weekly">
-    <div class="title">📅 THIS WEEK</div>
-    <div class="week-grid" id="weekGrid"></div>
-  </div>
-  <div class="recent">
-    <div class="title">⚡ RECENT</div>
-    <div class="recent-list" id="recentList"><div style="color:var(--muted);font-size:11px">No activity</div></div>
-  </div>
+  <div class="weekly"><div class="title">📅 THIS WEEK</div><div class="week-grid" id="weekGrid"></div></div>
+  <div class="recent"><div class="title">⚡ RECENT</div><div class="recent-list" id="recentList"><div style="color:var(--muted);font-size:11px">No activity</div></div></div>
 </div>
 
 <div class="toolbar">
@@ -222,10 +202,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 
 <div class="cal-wrap" id="calWrap">
-  <div class="cal-title">
-    <span>📅 <span id="calTitle"></span></span>
-    <span id="odStatus" style="font-size:9px;color:var(--accent2);font-weight:700"></span>
-  </div>
+  <div class="cal-title"><span>📅 <span id="calTitle"></span></span><span id="odStatus" style="font-size:9px;color:var(--accent2);font-weight:700"></span></div>
   <div class="cal-grid" id="calGrid"></div>
 </div>
 
@@ -234,33 +211,39 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 </div>
 <div class="toast" id="toast"></div>
 
+<!-- Day Modal -->
+<div class="modal-overlay" id="dayModal">
+  <div class="modal">
+    <button class="close" onclick="closeDayModal()">✕</button>
+    <h2 id="modalTitle">Day 14</h2>
+    <div class="sub" id="modalSub">September 14, 2026</div>
+    <button class="day-tog-all" id="modalToggleAll">✅ Toggle all</button>
+    <div id="modalHabitList"></div>
+    <div class="day-note">
+      <label>📝 Day note / event</label>
+      <textarea id="modalNote" placeholder="What's happening today? Set a goal, challenge, or note..." oninput="saveDayNote()"></textarea>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── STATE ───
-let data=[], m=new Date().getMonth(), y=new Date().getFullYear()
+let data=[], m=new Date().getMonth(), y=new Date().getFullYear(), modalDay=-1, overdriveWeek=-1
 const MON=['January','February','March','April','May','June','July','August','September','October','November','December']
 const DOW=['S','M','T','W','T','F','S']
+const DOW_SHORT=['S','M','T','W','T','F','S']
 const WK_COLORS=['#ff5e7a','#a855f7','#3b82f6','#eab308','#22c55e']
 const EMOJIS=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️','🏃','🎸','🧪','🌱']
 const THEMES=[{id:'dark',label:'🌙 Dark'},{id:'midnight',label:'🔮 Midnight'},{id:'cyber',label:'💜 Cyber'},{id:'forest',label:'🌿 Forest'},{id:'ocean',label:'🌊 Ocean'},{id:'sunset',label:'🌅 Sunset'},{id:'light',label:'☀️ Light'}]
-const DOW_SHORT=['S','M','T','W','T','F','S']
-let overdriveWeek=-1
+const DAY_META_KEY='ht_daynotes'
 
 function load(){
   try{const d=localStorage.getItem('ht4');if(d)data=JSON.parse(d)}catch(e){}
-  // Init theme
   const sel=document.getElementById('themeSelect')
   sel.innerHTML=THEMES.map(t=>`<option value="${t.id}">${t.label}</option>`).join('')
   const savedTheme=localStorage.getItem('ht_theme')||'dark'
   sel.value=savedTheme;document.documentElement.setAttribute('data-theme',savedTheme)
-  overdriveWeek=parseInt(localStorage.getItem('ht_od'))||-1
-  // Auto-pick overdrive week if not set for this month
-  const odKey=`ht_od_${y}_${m}`
-  const savedOd=localStorage.getItem(odKey)
-  if(savedOd!==null){overdriveWeek=parseInt(savedOd)}else{
-    const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
-    overdriveWeek=Math.floor(Math.random()*wks)
-    localStorage.setItem(odKey,overdriveWeek)
-  }
+  pickOdWeekForMonth()
   if(!data.length){
     data=[
       {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
@@ -273,59 +256,47 @@ function load(){
   render()
 }
 function save(){localStorage.setItem('ht4',JSON.stringify(data))}
-
 function dim(y,m){return new Date(y,m+1,0).getDate()}
 function ds(y,m,d){return `${y}-${(m+1+'').padStart(2,'0')}-${(d+'').padStart(2,'0')}`}
 function td(){const d=new Date();return ds(d.getFullYear(),d.getMonth(),d.getDate())}
 function fdy(y,m){return new Date(y,m,1).getDay()}
+function strek(dates){if(!dates||!dates.length)return 0;const s=[...new Set(dates)].sort().reverse();let c=0,ck=new Date();ck.setHours(0,0,0,0);for(const d of s){const x=new Date(d);x.setHours(0,0,0,0);if(+x===+ck){c++;ck.setDate(ck.getDate()-1)}else if(+x<+ck)break}return c}
+function bstrek(dates){if(!dates||dates.length<2)return dates?.length||0;const s=[...new Set(dates)].sort().map(d=>new Date(d).setHours(0,0,0,0));let b=1,c=1;for(let i=1;i<s.length;i++){if((s[i]-s[i-1])/86400000===1){c++;b=Math.max(b,c)}else c=1}return b}
+function toast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 
-function streak(dates){
-  if(!dates||!dates.length)return 0
-  const s=[...new Set(dates)].sort().reverse();let c=0,ck=new Date();ck.setHours(0,0,0,0)
-  for(const d of s){const x=new Date(d);x.setHours(0,0,0,0)
-    if(+x===+ck){c++;ck.setDate(ck.getDate()-1)}else if(+x<+ck)break}
-  return c
+function pickOdWeekForMonth(){
+  const key=`ht_od_${y}_${m}`
+  const saved=localStorage.getItem(key)
+  if(saved!==null){overdriveWeek=parseInt(saved)}else{
+    const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
+    overdriveWeek=Math.floor(Math.random()*wks)
+    localStorage.setItem(key,overdriveWeek)
+  }
 }
-function bstreak(dates){
-  if(!dates||dates.length<2)return dates?.length||0
-  const s=[...new Set(dates)].sort().map(d=>new Date(d).setHours(0,0,0,0))
-  let b=1,c=1
-  for(let i=1;i<s.length;i++){if((s[i]-s[i-1])/86400000===1){c++;b=Math.max(b,c)}else c=1}
-  return b
-}
-function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 
 function render(){
   const sel=document.getElementById('monthSelect')
   sel.innerHTML=MON.map((n,i)=>`<option value="${i}"${i===m?' selected':''}>${n}</option>`).join('')
   document.getElementById('yearLabel').textContent=y
-
   if(!data.length){renderEmpty();return}
-
   const dInM=dim(y,m),today=td(),fDay=fdy(y,m)
   const all=[],dayCnt=[],topH=[]
-
   for(const h of data){
     const dm=(h.d||[]).filter(d=>{const x=new Date(d);return x.getMonth()===m&&x.getFullYear()===y})
     const p=dInM>0?dm.length/dInM:0
-    all.push({...h,md:dm,pct:p,str:streak(h.d||[]),bst:bstreak(h.d||[])})
+    all.push({...h,md:dm,pct:p,str:strek(h.d||[]),bst:bstrek(h.d||[])})
     topH.push({n:h.n,e:h.e,pct:p,c:dm.length})
     for(let d=1;d<=dInM;d++){const i=d-1;if(!dayCnt[i])dayCnt[i]=0;if(dm.includes(ds(y,m,d)))dayCnt[i]++}
   }
   topH.sort((a,b)=>b.pct-a.pct)
-
-  // Weekly bars
   const wks=Math.ceil((fDay+dInM)/7),wd=[]
   for(let w=0;w<wks;w++){
     const s=w*7+1-fDay,e=Math.min(s+6,dInM);let t=0,cnt=0
     for(let d=Math.max(1,s);d<=e;d++){t+=dayCnt[d-1]||0;cnt++}
     wd.push({l:`W${w+1}`,v:cnt>0?Math.round(t/(data.length||1)*100/cnt)/10:0,c:WK_COLORS[w%5]})
   }
-
-  // Stats
   const tCI=all.reduce((a,h)=>a+h.md.length,0),tP=data.length*dInM
   const ovPct=tP>0?Math.round(tCI/tP*100):0
-
   document.getElementById('donutRing').style.background=`conic-gradient(#22c55e 0deg ${ovPct*3.6}deg, var(--border) ${ovPct*3.6}deg 360deg)`
   document.getElementById('donutPct').textContent=ovPct+'%'
   document.getElementById('completed').textContent=tCI
@@ -333,84 +304,21 @@ function render(){
   document.getElementById('leftCount').textContent=tP-tCI
   document.getElementById('bestDay').textContent=Math.max(...all.map(h=>h.bst),0)
   document.getElementById('avgDay').textContent=dInM>0?Math.round(tCI/(data.length||1)/dInM*100)+'%':0
-
-  // Bar chart
   const mv=Math.max(...wd.map(w=>w.v),1)
-  document.getElementById('barChart').innerHTML=wd.map(w=>
-    `<div class="bar"><div class="fill" style="height:${Math.round(w.v/mv*65)}px;background:${w.c};opacity:.85"></div><span class="label">${w.l}</span></div>`
-  ).join('')
-
-  // Top habits
-  document.getElementById('topHabits').innerHTML=topH.slice(0,8).map((h,i)=>
-    `<div class="top-item"><span class="rank">#${i+1}</span><span class="name">${h.e||'🎯'} ${h.n}</span><div class="tbar"><div class="tfill" style="width:${Math.round(h.pct*100)}%"></div></div><span class="tpct">${Math.round(h.pct*100)}%</span></div>`
-  ).join('')
-
-  // Week grid
+  document.getElementById('barChart').innerHTML=wd.map(w=>`<div class="bar"><div class="fill" style="height:${Math.round(w.v/mv*65)}px;background:${w.c};opacity:.85"></div><span class="label">${w.l}</span></div>`).join('')
+  document.getElementById('topHabits').innerHTML=topH.slice(0,8).map((h,i)=>`<div class="top-item"><span class="rank">#${i+1}</span><span class="name">${h.e||'🎯'} ${h.n}</span><div class="tbar"><div class="tfill" style="width:${Math.round(h.pct*100)}%"></div></div><span class="tpct">${Math.round(h.pct*100)}%</span></div>`).join('')
   const tr=new Date();tr.setDate(tr.getDate()-tr.getDay())
-  document.getElementById('weekGrid').innerHTML=[...Array(7)].map((_,i)=>{
-    const d=new Date(tr);d.setDate(tr.getDate()+i)
-    const dds=ds(d.getFullYear(),d.getMonth(),d.getDate()),isT=dds===td()
-    const cnt=all.filter(h=>h.md.includes(dds)).length
-    return `<div class="week-day${cnt>0?' done':''}${isT?' today':''}"><div class="wd">${DOW[d.getDay()]}</div><div class="wn">${cnt}</div></div>`
-  }).join('')
-
-  // Recent
-  const rec=[]
-  for(let d=dInM;d>=1;d--){
-    const dds=ds(y,m,d),done=all.filter(h=>h.md.includes(dds))
-    if(done.length){rec.push({date:d,cnt:done.length});if(rec.length>=6)break}
-  }
-  document.getElementById('recentList').innerHTML=rec.length?rec.map(r=>`<div class="recent-item"><span class="dot"></span><span class="rdate">Day ${r.date}</span><span>${r.cnt} habits</span></div>`).join(''):'<div style="color:var(--muted);font-size:11px">No activity</div>'
-
-  // Grid
-  renderGrid(all,dInM,today,fDay)
-  renderCalendar()
-
-  // Overdrive button state
-  const odBtn=document.getElementById('odBtn')
-  const odStatus=document.getElementById('odStatus')
+  document.getElementById('weekGrid').innerHTML=[...Array(7)].map((_,i)=>{const d=new Date(tr);d.setDate(tr.getDate()+i);const dds=ds(d.getFullYear(),d.getMonth(),d.getDate()),isT=dds===td();const cnt=all.filter(h=>h.md.includes(dds)).length;return `<div class="week-day${cnt>0?' done':''}${isT?' today':''}"><div class="wd">${DOW[d.getDay()]}</div><div class="wn">${cnt}</div></div>`}).join('')
+  const rec=[];for(let d=dInM;d>=1;d--){const dds=ds(y,m,d),done=all.filter(h=>h.md.includes(dds));if(done.length){rec.push({date:d,cnt:done.length});if(rec.length>=6)break}}
+  document.getElementById('recentList').innerHTML=rec.length?rec.map(r=>`<div class="recent-item"><span class="rdot"></span><span class="rdate">Day ${r.date}</span><span>${r.cnt} habits</span></div>`).join(''):'<div style="color:var(--muted);font-size:11px">No activity</div>'
+  renderGrid(all,dInM,today,fDay);renderCalendar()
+  const odBtn=document.getElementById('odBtn'),odStatus=document.getElementById('odStatus')
   const fDay_=fdy(y,m)
-  const cw=new Date()
-  const curW=cw.getMonth()===m&&cw.getFullYear()===y?Math.floor((cw.getDate()-1+fDay_)/7):-1
-  if(overdriveWeek>=0){
-    odBtn.textContent='⚡ Reroll'
-    odBtn.classList.add('active')
-    const wStart=overdriveWeek*7+1-fDay_,wEnd=Math.min(wStart+6,dInM)
-    odStatus.textContent=`🔥 Overdrive: Days ${Math.max(1,wStart)}-${wEnd}`
-  }else{
-    odBtn.textContent='⚡ Reroll'
-    odBtn.classList.remove('active')
-    odStatus.textContent=''
-  }
+  if(overdriveWeek>=0){odBtn.textContent='⚡ Reroll';odBtn.classList.add('active');const wStart=overdriveWeek*7+1-fDay_,wEnd=Math.min(wStart+6,dInM);odStatus.textContent=`🔥 Overdrive: Days ${Math.max(1,wStart)}-${wEnd}`}
+  else{odBtn.textContent='⚡ Reroll';odBtn.classList.remove('active');odStatus.textContent=''}
 }
-
-function renderGrid(all,dInM,today,fDay){
-  const wks=Math.ceil((fDay+dInM)/7)
-  let h='<div class="grid-wrap"><table><thead><tr><th>Habit</th>'
-  for(let d=1;d<=dInM;d++){
-    const w=Math.floor((d-1+fDay)/7),isT=ds(y,m,d)===today
-    const wdNum=new Date(y,m,d).getDay()
-    h+=`<th class="wk${(w%5)+1}${w===overdriveWeek?' od-head':''}" style="${isT?'box-shadow:inset 0 -2px 0 #fff':''}"><span style="font-size:6px;opacity:.7">${DOW[wdNum]}</span><br><span style="font-size:12px;font-weight:800">${d}</span></th>`
-  }
-  h+=`<th style="background:var(--card2)!important">🔥</th><th style="background:var(--card2)!important">%</th><th></th></tr></thead><tbody>`
-
-  for(const ht of all){
-    h+=`<tr><td><span style="margin-right:5px">${ht.e||'🎯'}</span>${ht.n}</td>`
-    for(let d=1;d<=dInM;d++){
-      const dds=ds(y,m,d),done=ht.md.includes(dds),isT=dds===today
-      const w=Math.floor((d-1+fDay)/7)
-      h+=`<td><div class="g-cell${done?' done':''}${isT?' today':''}${w===overdriveWeek?' od':''}" onclick="tog('${ht.n.replace(/'/g,"\\'")}','${dds}')"></div></td>`
-    }
-    h+=`<td><span class="g-str">${ht.str>0?'🔥'+ht.str:'—'}</span></td>`
-    h+=`<td><span class="g-pct">${Math.round(ht.pct*100)}%</span></td>`
-    h+=`<td><button class="g-del" onclick="del('${ht.n.replace(/'/g,"\\'")}')">✕</button></td></tr>`
-  }
-  h+='</tbody></table></div>'
-  document.getElementById('gridContainer').innerHTML=h
-}
-
 function renderEmpty(){
-  document.getElementById('donutRing').style.background=`conic-gradient(#22c55e 0deg 0deg, var(--border) 0deg 360deg)`
+  document.getElementById('donutRing').style.background='conic-gradient(#22c55e 0deg 0deg,var(--border) 0deg 360deg)'
   document.getElementById('donutPct').textContent='0%'
   for(const id of ['completed','totalGoal','leftCount'])document.getElementById(id).textContent='0'
   document.getElementById('bestDay').textContent='—';document.getElementById('avgDay').textContent='0'
@@ -419,8 +327,99 @@ function renderEmpty(){
   document.getElementById('weekGrid').innerHTML=''
   document.getElementById('recentList').innerHTML='<div style="color:var(--muted);font-size:11px">No activity</div>'
   document.getElementById('gridContainer').innerHTML='<div class="empty">🎯<br><br>No habits yet</div>'
+  renderCalendar()
+}
+function renderGrid(all,dInM,today,fDay){
+  let h='<div class="grid-wrap"><table><thead><tr><th>Habit</th>'
+  for(let d=1;d<=dInM;d++){const w=Math.floor((d-1+fDay)/7),isT=ds(y,m,d)===today,wdNum=new Date(y,m,d).getDay()
+    h+=`<th class="wk${(w%5)+1}${w===overdriveWeek?' od-head':''}" style="${isT?'box-shadow:inset 0 -2px 0 #fff':''}"><span style="font-size:6px;opacity:.7">${DOW[wdNum]}</span><br><span style="font-size:12px;font-weight:800">${d}</span></th>`}
+  h+=`<th style="background:var(--card2)!important">🔥</th><th style="background:var(--card2)!important">%</th><th></th></tr></thead><tbody>`
+  for(const ht of all){
+    h+=`<tr><td><span style="margin-right:5px">${ht.e||'🎯'}</span>${ht.n}</td>`
+    for(let d=1;d<=dInM;d++){const dds=ds(y,m,d),done=ht.md.includes(dds),isT=dds===today,w=Math.floor((d-1+fDay)/7)
+      h+=`<td><div class="g-cell${done?' done':''}${isT?' today':''}${w===overdriveWeek?' od':''}" onclick="tog('${ht.n.replace(/'/g,"\\'")}','${dds}')"></div></td>`}
+    h+=`<td><span class="g-str">${ht.str>0?'🔥'+ht.str:'—'}</span></td><td><span class="g-pct">${Math.round(ht.pct*100)}%</span></td><td><button class="g-del" onclick="del('${ht.n.replace(/'/g,"\\'")}')">✕</button></td></tr>`
+  }
+  h+='</tbody></table></div>'
+  document.getElementById('gridContainer').innerHTML=h
+}
+function renderCalendar(){
+  const dInM=dim(y,m),fDay=fdy(y,m),today=td()
+  let html=''
+  for(const d of DOW_SHORT)html+=`<div class="cal-hdr">${d}</div>`
+  for(let i=0;i<fDay;i++)html+='<div class="cal-day empty"></div>'
+  for(let d=1;d<=dInM;d++){
+    const dds=ds(y,m,d),isT=dds===today,w=Math.floor((d-1+fDay)/7)
+    const doneCount=data.filter(h=>(h.d||[]).includes(dds)).length
+    html+=`<div class="cal-day${isT?' today':''}${w===overdriveWeek?' od-active':''}${doneCount===data.length&&data.length>0?' fullmark':''}" onclick="openDayModal(${d})">${d}</div>`
+  }
+  document.getElementById('calGrid').innerHTML=html
+  document.getElementById('calTitle').textContent=MON[m]+' '+y
 }
 
+// ─── DAY MODAL ───
+function openDayModal(d){
+  modalDay=d
+  const dds=ds(y,m,d)
+  const dt=new Date(y,m,d)
+  document.getElementById('modalTitle').textContent=`📅 ${MON[m]} ${d}`
+  document.getElementById('modalSub').textContent=`${DOW[dt.getDay()]}, ${MON[m]} ${d}, ${y}`
+  
+  // Load note
+  const notes=loadDayNotes()
+  document.getElementById('modalNote').value=notes[dds]||''
+  
+  // Habit list for this day
+  let html=''
+  let allDone=0
+  for(const h of data){
+    const done=(h.d||[]).includes(dds)
+    if(done)allDone++
+    html+=`<div class="habit-check">
+      <div class="hc-dot${done?' checked':''}" onclick="toggleHabitDay('${h.n.replace(/'/g,"\\'")}','${dds}')"></div>
+      <span class="hc-name">${h.e||'🎯'} ${h.n}</span>
+      <span class="hc-str">🔥${strek(h.d||[])}</span>
+    </div>`
+  }
+  document.getElementById('modalHabitList').innerHTML=html
+  
+  // Toggle all button
+  document.getElementById('modalToggleAll').textContent=allDone===data.length?'↩️ Uncheck all':'✅ Check all'
+  
+  document.getElementById('dayModal').classList.add('open')
+}
+function closeDayModal(){document.getElementById('dayModal').classList.remove('open');modalDay=-1}
+function toggleHabitDay(name,date){
+  const h=data.find(x=>x.n===name);if(!h)return
+  if(!h.d)h.d=[]
+  const j=h.d.indexOf(date);j>-1?h.d.splice(j,1):h.d.push(date)
+  save();render();openDayModal(modalDay)
+}
+function toggleAllDay(){
+  if(modalDay<0)return
+  const dds=ds(y,m,modalDay)
+  const allDone=data.every(h=>(h.d||[]).includes(dds))
+  for(const h of data){
+    if(!h.d)h.d=[]
+    const j=h.d.indexOf(dds)
+    if(allDone){if(j>-1)h.d.splice(j,1)}else{if(j<0)h.d.push(dds)}
+  }
+  save();render();openDayModal(modalDay)
+  toast(allDone?`↩️ Day ${modalDay} unchecked`:`✅ Day ${modalDay} all habits done`)
+}
+function saveDayNote(){
+  if(modalDay<0)return
+  const dds=ds(y,m,modalDay),note=document.getElementById('modalNote').value.trim()
+  const notes=loadDayNotes()
+  if(note)notes[dds]=note;else delete notes[dds]
+  localStorage.setItem(DAY_META_KEY,JSON.stringify(notes))
+}
+function loadDayNotes(){
+  try{const d=localStorage.getItem(DAY_META_KEY);if(d)return JSON.parse(d)}catch(e){}
+  return {}
+}
+
+// ─── ACTIONS ───
 function add(){
   const i=document.getElementById('input'),v=i.value.trim()
   if(!v)return
@@ -429,63 +428,19 @@ function add(){
 }
 function del(n){const i=data.findIndex(h=>h.n===n);if(i>-1){data.splice(i,1);save();render();toast('🗑️ Deleted')}}
 function tog(n,date){
-  const h=data.find(x=>x.n===n)
-  if(!h)return
-  if(!h.d)h.d=[]
-  const j=h.d.indexOf(date);j>-1?h.d.splice(j,1):h.d.push(date);save();render()
+  const h=data.find(x=>x.n===n);if(!h)return
+  if(!h.d)h.d=[];const j=h.d.indexOf(date);j>-1?h.d.splice(j,1):h.d.push(date);save();render()
 }
-function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};pickOdWeek();render()}
-function navYear(d){y+=d;pickOdWeek();render()}
-function goMonth(v){m=parseInt(v);pickOdWeek();render()}
-function pickOdWeek(){
-  const odKey=`ht_od_${y}_${m}`
-  let saved=localStorage.getItem(odKey)
-  if(saved===null){
-    const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
-    saved=Math.floor(Math.random()*wks)
-    localStorage.setItem(odKey,saved)
-  }
-  overdriveWeek=parseInt(saved)
-}
+function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};pickOdWeekForMonth();render()}
+function navYear(d){y+=d;pickOdWeekForMonth();render()}
+function goMonth(v){m=parseInt(v);pickOdWeekForMonth();render()}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ht_theme',t)}
-
-function renderCalendar(){
-  const dInM=dim(y,m),fDay=fdy(y,m),today=td()
-  let html=''
-  for(const d of DOW_SHORT)html+=`<div class="cal-hdr">${d}</div>`
-  for(let i=0;i<fDay;i++)html+='<div class="cal-day empty"></div>'
-  for(let d=1;d<=dInM;d++){
-    const dds=ds(y,m,d),isT=dds===today
-    const w=Math.floor((d-1+fDay)/7)
-    // Check if all habits done this day
-    const doneCount=data.filter(h=>(h.d||[]).includes(dds)).length
-    const cls=`cal-day${isT?' today':''}${w===overdriveWeek?' od-active':''}${doneCount===data.length&&data.length>0?' fullmark':''}`
-    html+=`<div class="${cls}" onclick="if(${d}<=${dInM})navToDay(${d})">${d}</div>`
-  }
-  document.getElementById('calGrid').innerHTML=html
-  document.getElementById('calTitle').textContent=MON[m]+' '+y
-}
-
-function navToDay(d){
-  const dds=ds(y,m,d)
-  // Toggle all habits for this day
-  let count=0
-  for(const h of data){
-    if(!h.d)h.d=[]
-    const j=h.d.indexOf(dds)
-    if(j>-1){h.d.splice(j,1)}else{h.d.push(dds);count++}
-  }
-  save();render();toast( count>0 ? `✅ Day ${d} marked for ${count} habits` : `↩️ Day ${d} unchecked` )
-}
-
 function toggleOverdrive(){
   const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
   overdriveWeek=Math.floor(Math.random()*wks)
-  const odKey=`ht_od_${y}_${m}`
-  localStorage.setItem(odKey,overdriveWeek)
+  localStorage.setItem(`ht_od_${y}_${m}`,overdriveWeek)
   render();toast(`⚡ New overdrive week: W${overdriveWeek+1}`)
 }
-
 function deleteAll(){
   if(!confirm('Delete ALL habits and data? This cannot be undone!'))return
   data=[];save();render();toast('🗑️ All habits deleted')
