@@ -2,196 +2,190 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>habit tracker</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0f;--card:#12121e;--accent:#e94560;--accent2:#ff6b6b;--green:#1b4d38;--green-lt:#6bc99b;--text:#eef0f2;--muted:#555570;--border:#1e1e2e}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);padding:0;min-height:100vh;overflow-x:hidden}
-.container{max-width:900px;margin:0 auto;padding:32px 24px}
+:root{--bg:#0c0c12;--card:#14141e;--accent:#ff5e7a;--accent2:#ff8a9e;--green:#1a4a3a;--green-lt:#5cb885;--text:#eee;--muted:#5a5a72;--border:#20203a;--row-alt:#10101a}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);padding:24px;min-height:100vh}
+.wrap{max-width:1100px;margin:0 auto}
 
-/* Header */
-h1{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted);text-align:center;margin-bottom:24px}
-.month-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
-.month-row .m{font-size:20px;font-weight:700}
-.month-row .nav{display:flex;gap:4px}
-.month-row .nav button{background:var(--card);border:none;color:var(--muted);width:32px;height:32px;border-radius:8px;cursor:pointer;font-size:16px;transition:.2s}
-.month-row .nav button:hover{color:var(--text);background:var(--border)}
+/* ── HEADER ── */
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:28px}
+.top h1{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--muted)}
+.top .nav{display:flex;align-items:center;gap:12px}
+.top .nav .m{font-size:20px;font-weight:700;min-width:130px;text-align:center}
+.top .nav button{background:var(--card);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:16px;transition:.15s}
+.top .nav button:hover{border-color:var(--accent)}
 
-/* Stats row */
-.stats{display:flex;gap:8px;margin-bottom:28px}
-.stat{flex:1;background:var(--card);border-radius:12px;padding:12px;text-align:center}
-.stat .v{font-size:18px;font-weight:800;color:var(--accent2)}
-.stat .l{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+/* ── STATS BAR ── */
+.stats{display:flex;gap:10px;margin-bottom:24px}
+.stats .s{flex:1;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:12px}
+.stats .s .icon{font-size:20px;width:36px;height:36px;background:var(--bg);border-radius:8px;display:grid;place-items:center}
+.stats .s .info{display:flex;flex-direction:column}
+.stats .s .info .v{font-size:22px;font-weight:800;color:var(--accent2);line-height:1}
+.stats .s .info .l{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
 
-/* Form */
-.add-row{display:flex;gap:6px;margin-bottom:20px}
-.add-row input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
-.add-row input:focus{border-color:var(--accent)}
-.add-row button{background:var(--accent);border:none;border-radius:8px;padding:10px 16px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif}
-.add-row button:hover{background:var(--accent2)}
+/* ── ADD FORM ── */
+.add{display:flex;gap:8px;margin-bottom:20px}
+.add input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
+.add input:focus{border-color:var(--accent)}
+.add button{background:var(--accent);border:none;border-radius:8px;padding:11px 20px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.add button:hover{background:var(--accent2)}
 
-/* Habit block */
-.habit{background:var(--card);border-radius:12px;padding:14px 14px 12px;margin-bottom:8px;border:1px solid var(--border)}
-.habit-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
-.habit-left{display:flex;align-items:center;gap:8px}
-.habit-emoji{font-size:15px;width:20px;text-align:center}
-.habit-name{font-size:13px;font-weight:600}
-.habit-right{display:flex;align-items:center;gap:8px}
-.habit-streak{font-size:11px;color:var(--accent2);font-weight:700}
-.habit-pct{font-size:10px;color:var(--muted)}
-.habit-del{background:none;border:none;color:var(--muted);font-size:13px;cursor:pointer;padding:2px 4px;opacity:0;transition:.2s}
-.habit:hover .habit-del{opacity:.5}
-.habit-del:hover{color:var(--accent);opacity:1!important}
+/* ── SPREADSHEET TABLE ── */
+.tbl{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;overflow-x:auto}
+.tbl table{width:100%;border-collapse:collapse;min-width:700px;font-size:13px}
+.tbl th,.tbl td{padding:10px 12px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap}
+.tbl th{background:var(--bg);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:12px 10px;position:sticky;top:0;z-index:2}
+.tbl td:first-child,.tbl th:first-child{text-align:left;position:sticky;left:0;z-index:3;background:var(--card);padding-left:16px;min-width:150px}
+.tbl td:first-child{font-weight:600;display:flex;align-items:center;gap:8px}
+.tbl tr:nth-child(even) td{background:var(--row-alt)}
+.tbl tr:nth-child(even) td:first-child{background:var(--row-alt)}
 
-/* Chain grid - the Instagram look */
-.chain{display:grid;grid-template-columns:repeat(31,1fr);gap:4px;overflow-x:auto;padding-bottom:4px}
-.days-row{display:grid;grid-template-columns:repeat(31,1fr);gap:4px;margin-bottom:2px;overflow-x:auto}
-.day-hdr{text-align:center;font-size:8px;font-weight:600;color:var(--muted);padding:2px 0}
-.day-hdr.today{color:var(--accent);font-weight:700}
-.dot{aspect-ratio:1;border-radius:6px;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;transition:all .15s;min-height:36px;position:relative;width:100%;min-width:24px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:600;color:var(--muted)}
-.dot:hover{transform:scale(1.15);border-color:var(--accent)}
-.dot.done{background:var(--green);border-color:var(--green-lt)}
-.dot.today{border-color:var(--accent);border-width:2px}
-.dot.today.done{border-color:var(--green-lt);border-width:2px}
-.dot-label{position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);font-size:6px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;pointer-events:none}
+/* Day cells */
+.day-cell{cursor:pointer;border-radius:6px;width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;background:var(--bg);border:1px solid var(--border);transition:all .12s;margin:1px}
+.day-cell:hover{border-color:var(--accent);transform:scale(1.1)}
+.day-cell.done{background:var(--green);border-color:var(--green-lt);color:var(--green-lt)}
+.day-cell.today{border-color:var(--accent);border-width:2px}
+.day-cell.weekend{opacity:.5}
 
-/* Bullet proof - also looks good */
-.bullet-row{display:flex;align-items:center;gap:6px;margin-top:12px;padding-top:8px;border-top:1px solid var(--border)}
-.bullet{width:22px;height:22px;border-radius:50%;background:var(--bg);border:1.5px solid var(--border);cursor:pointer;transition:.15s;flex-shrink:0}
-.bullet.done{background:var(--green);border-color:var(--green-lt)}
-.bullet:hover{transform:scale(1.2);border-color:var(--accent)}
-.bullet-label{font-size:8px;color:var(--muted);min-width:18px;text-align:center}
+/* Streak & % */
+.str{color:var(--accent2);font-weight:700;font-size:12px}
+.pct{color:var(--muted);font-size:11px;font-weight:500}
 
-.empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
-.empty .big{font-size:40px;margin-bottom:12px}
+/* Delete */
+.del{cursor:pointer;color:var(--muted);font-size:14px;transition:.15s;opacity:0;background:none;border:none;padding:2px 6px;font-family:'Inter',sans-serif}
+.tbl tr:hover .del{opacity:.4}
+.del:hover{color:var(--accent)!important;opacity:1!important}
+
+/* Day header row - weekday labels */
+th .d-num{font-size:11px;font-weight:700;color:var(--text);display:block;margin-top:2px}
+th .d-name{font-size:7px;text-transform:uppercase;letter-spacing:.3px;color:var(--muted)}
+
+/* Empty */
+.empty{text-align:center;padding:60px;color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-<h1>📋 monthly tracker</h1>
-
-<div class="month-row">
-  <div class="m" id="monthLabel"></div>
+<div class="top">
+  <h1>📋 monthly tracker</h1>
   <div class="nav">
     <button onclick="nav(-1)">‹</button>
+    <span class="m" id="monthLbl"></span>
     <button onclick="nav(1)">›</button>
   </div>
 </div>
 
 <div class="stats" id="stats">
-  <div class="stat"><div class="v" id="overall">0%</div><div class="l">done</div></div>
-  <div class="stat"><div class="v" id="streakAvg">0</div><div class="l">avg streak</div></div>
-  <div class="stat"><div class="v" id="checkins">0</div><div class="l">check-ins</div></div>
+  <div class="s"><div class="icon">📊</div><div class="info"><span class="v" id="overall">0%</span><span class="l">completed</span></div></div>
+  <div class="s"><div class="icon">🔥</div><div class="info"><span class="v" id="streakAvg">0</span><span class="l">avg streak</span></div></div>
+  <div class="s"><div class="icon">✅</div><div class="info"><span class="v" id="checkins">0</span><span class="l">check-ins</span></div></div>
+  <div class="s"><div class="icon">🏆</div><div class="info"><span class="v" id="bestHabit">—</span><span class="l">best streak</span></div></div>
 </div>
 
-<div class="add-row">
-  <input id="input" placeholder="add habit..." autocomplete="off">
-  <button onclick="add()">+</button>
+<div class="add">
+  <input id="input" placeholder="Add a new habit..." autocomplete="off">
+  <button onclick="add()">+ Add</button>
 </div>
 
-<div id="list"></div>
-
-<div class="empty" id="empty">
-  <div class="big">🎯</div>
-  <p>no habits yet</p>
-</div>
+<div id="list"><div class="empty">🎯<br><br>No habits yet — add one above!</div></div>
 
 </div>
 
 <script>
 // ─── STATE ───
-let data = [];
-let m = new Date().getMonth();
-let y = new Date().getFullYear();
-const MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-const DOW = ['S','M','T','W','T','F','S'];
+let data=[];let m=new Date().getMonth();let y=new Date().getFullYear()
+const MON=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+const DOW=['S','M','T','W','T','F','S']
 
-function load(){try{const d=localStorage.getItem('ht');if(d)data=JSON.parse(d)}catch(e){}}
-function save(){localStorage.setItem('ht',JSON.stringify(data))}
+function load(){try{const d=localStorage.getItem('ht2');if(d)data=JSON.parse(d)}catch(e){}}
+function save(){localStorage.setItem('ht2',JSON.stringify(data))}
 
-function daysInMonth(y,m){return new Date(y,m+1,0).getDate()}
-function dateStr(y,m,d){return y+'-'+(m+1+'').padStart(2,'0')+'-'+(d+'').padStart(2,'0')}
-function todayStr(){const d=new Date();return dateStr(d.getFullYear(),d.getMonth(),d.getDate())}
+function dim(y,m){return new Date(y,m+1,0).getDate()}
+function ds(y,m,d){return `${y}-${(m+1+'').padStart(2,'0')}-${(d+'').padStart(2,'0')}`}
+function td(){const d=new Date();return ds(d.getFullYear(),d.getMonth(),d.getDate())}
 
 function streak(dates){
   if(!dates||!dates.length)return 0
-  let s=[...new Set(dates)].sort().reverse(),c=0,t=new Date();t.setHours(0,0,0,0)
+  const s=[...new Set(dates)].sort().reverse();let c=0,ck=new Date();ck.setHours(0,0,0,0)
   for(const d of s){const x=new Date(d);x.setHours(0,0,0,0)
-    if(+x===+t){c++;t.setDate(t.getDate()-1)}else if(+x<+t)break}
+    if(+x===+ck){c++;ck.setDate(ck.getDate()-1)}else if(+x<+ck)break}
   return c
+}
+function best(dates){
+  if(!dates||dates.length<2)return dates?.length||0
+  const s=[...new Set(dates)].sort().map(d=>new Date(d).setHours(0,0,0,0))
+  let b=1,c=1
+  for(let i=1;i<s.length;i++){if((s[i]-s[i-1])/86400000===1){c++;b=Math.max(b,c)}else c=1}
+  return b
 }
 
 function render(){
-  const el=document.getElementById('list'),em=document.getElementById('empty')
-  document.getElementById('monthLabel').textContent=MON[m]+' '+y
+  const el=document.getElementById('list')
+  document.getElementById('monthLbl').textContent=MON[m]+' '+y
+  if(!data.length){el.innerHTML=`<div class="empty">🎯<br><br>No habits yet — add one above!</div>`;stats();return}
+
+  const daysInMonth=dim(y,m),today=td()
+  let html='<div class="tbl"><table><thead><tr><th>Habit</th>'
   
-  if(!data.length){el.innerHTML='';em.style.display='block'
-    document.getElementById('overall').textContent='0%'
-    document.getElementById('streakAvg').textContent='0'
-    document.getElementById('checkins').textContent='0'
-    return}
-  em.style.display='none'
+  // Day headers
+  for(let d=1;d<=daysInMonth;d++){
+    const wd=new Date(y,m,d).getDay()
+    const isToday=ds(y,m,d)===today
+    html+=`<th${isToday?' style="color:var(--accent)"':''}><span class="d-name">${DOW[wd]}</span><span class="d-num">${d}</span></th>`
+  }
+  html+=`<th>🔥</th><th>%</th><th></th></tr></thead><tbody>`
 
-  const dim=daysInMonth(y,m),today=todayStr()
-  let h='',ttl=0,strs=[],cks=0
+  let overallPct=0,streaks=[],totalCks=0,bestStreak=0
 
-  for(const hh of data){
-    const dm=(hh.d||[]).filter(d=>{const x=new Date(d);return x.getMonth()===m&&x.getFullYear()===y})
-    const pct=dim>0?dm.length/dim:0
-    const str=streak(hh.d||[])
-    ttl+=pct;strs.push(str);cks+=dm.length
+  for(const h of data){
+    const dm=(h.d||[]).filter(d=>{const x=new Date(d);return x.getMonth()===m&&x.getFullYear()===y})
+    const pct=daysInMonth>0?dm.length/daysInMonth:0
+    const str=streak(h.d||[])
+    const bst=best(h.d||[])
+    overallPct+=pct;streaks.push(str);totalCks+=dm.length
+    if(bst>bestStreak)bestStreak=bst
 
-    // Chain dots
-        let daysHeader=''
-        for(let d=1;d<=dim;d++){
-          const isToday=dateStr(y,m,d)===today
-          daysHeader+=`<div class="day-hdr${isToday?' today':''}">${d}</div>`
-        }
+    html+=`<tr><td><span class="emoji">${h.e||'🎯'}</span> ${h.n}</td>`
+    
+    for(let d=1;d<=daysInMonth;d++){
+      const dds=ds(y,m,d),done=dm.includes(dds),isToday=dds===today,wd=new Date(y,m,d).getDay()
+      const isWeekend=wd===0||wd===6
+      html+=`<td><div class="day-cell${done?' done':''}${isToday?' today':''}" onclick="tog(${data.indexOf(h)},'${dds}')"></div></td>`
+    }
 
-        let dots=''
-        for(let d=1;d<=dim;d++){
-          const ds=dateStr(y,m,d),done=dm.includes(ds),is=ds===today
-          dots+=`<div class="dot${done?' done':''}${is?' today':''}" onclick="tog(${data.indexOf(hh)},'${ds}')"></div>`
-        }
-
-        h+=`<div class="habit">
-          <div class="habit-top">
-            <div class="habit-left">
-              <span class="habit-emoji">${hh.e||'🎯'}</span>
-              <span class="habit-name">${hh.n}</span>
-            </div>
-            <div class="habit-right">
-              <span class="habit-streak">${str>0?'🔥 '+str:''}</span>
-              <span class="habit-pct">${Math.round(pct*100)}%</span>
-              <span class="habit-del" onclick="del(${data.indexOf(hh)})">✕</span>
-            </div>
-          </div>
-          <div class="days-row">${daysHeader}</div>
-          <div class="chain">${dots}</div>
-        </div>`
+    html+=`<td><span class="str">${str>0?'🔥'+str:'—'}</span></td>`
+    html+=`<td><span class="pct">${Math.round(pct*100)}%</span></td>`
+    html+=`<td><button class="del" onclick="del(${data.indexOf(h)})">✕</button></td>`
+    html+=`</tr>`
   }
 
-  el.innerHTML=h
-  const avg=data.length||1
-  document.getElementById('overall').textContent=Math.round(ttl/avg*100)+'%'
-  document.getElementById('streakAvg').textContent=strs.length?Math.round(strs.reduce((a,b)=>a+b,0)/strs.length):0
-  document.getElementById('checkins').textContent=cks
+  html+='</tbody></table></div>'
+  el.innerHTML=html;stats(overallPct,streaks,totalCks,bestStreak)
+}
+
+function stats(o,s,cks,b){
+  const n=data.length||1
+  document.getElementById('overall').textContent=Math.round(o/n*100)+'%'
+  document.getElementById('streakAvg').textContent=s?.length?Math.round(s.reduce((a,b)=>a+b,0)/s.length):0
+  document.getElementById('checkins').textContent=cks||0
+  document.getElementById('bestHabit').textContent=b||'—'
 }
 
 function add(){
   const i=document.getElementById('input'),v=i.value.trim()
   if(!v)return
-  const emojis=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️']
+  const emojis=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️','🏃','🎸','🧪','🌱']
   data.push({n:v,d:[],e:emojis[data.length%emojis.length]})
   i.value='';save();render()
 }
-
 function del(i){data.splice(i,1);save();render()}
-function tog(i,ds){const h=data[i];if(!h.d)h.d=[]
-  const j=h.d.indexOf(ds);j>-1?h.d.splice(j,1):h.d.push(ds);save();render()}
+function tog(i,d){const h=data[i];if(!h.d)h.d=[]
+  const j=h.d.indexOf(d);j>-1?h.d.splice(j,1):h.d.push(d);save();render()}
 function nav(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};render()}
 
 load();render()
