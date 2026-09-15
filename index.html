@@ -245,12 +245,7 @@ function load(){
   sel.value=savedTheme;document.documentElement.setAttribute('data-theme',savedTheme)
   pickOdWeekForMonth()
   if(!data.length){
-    data=[
-      {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
-      {n:'Meditate',e:'🧘',d:[]},{n:'Journal',e:'📝',d:[]},{n:'Water',e:'💧',d:[]},{n:'Stretch',e:'🤸',d:[]}
-    ]
-    const dim=new Date(y,m+1,0).getDate()
-    for(const h of data)for(let i=1;i<=dim;i++)if(Math.random()>.35)h.d.push(ds(y,m,i))
+    data=[]
     save()
   }
   render()
