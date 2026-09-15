@@ -93,8 +93,8 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .recent-item .rdate{color:var(--muted);min-width:40px;font-weight:600}
 
 /* ── ADD HABIT ── */
-.toolbar{display:flex;gap:8px;margin-bottom:12px;margin-top:12px}
-.toolbar input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
+.toolbar{display:flex;gap:8px;margin-bottom:12px;margin-top:12px;flex-wrap:wrap}
+.toolbar input{flex:1;min-width:150px;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
 .toolbar input:focus{border-color:var(--accent)}
 .toolbar button{background:var(--accent);border:none;border-radius:8px;padding:10px 20px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
 .toolbar button:hover{background:var(--accent2)}
@@ -102,6 +102,22 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .toolbar .btn-sec:hover{border-color:var(--accent)}
 .toolbar .btn-danger{color:var(--accent);border-color:rgba(233,69,96,.3)}
 .toolbar .btn-danger:hover{background:rgba(233,69,96,.1);border-color:var(--accent)}
+.toolbar .btn-overdrive{background:linear-gradient(135deg,#ff00ff20,#ff5e7a20);border:1px solid var(--accent2);color:var(--accent2);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:.2s;font-weight:700;text-shadow:0 0 8px var(--accent2)}
+.toolbar .btn-overdrive.active{background:linear-gradient(135deg,#ff00ff40,#ff5e7a40);border-color:#ff00ff;color:#ff00ff;box-shadow:0 0 12px #ff00ff40}
+.toolbar .btn-overdrive:hover{transform:scale(1.03)}
+
+/* ── MINI CALENDAR ── */
+.cal-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin-bottom:12px;overflow:hidden}
+.cal-wrap .cal-title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}
+.cal-grid .cal-hdr{font-size:8px;text-transform:uppercase;color:var(--muted);font-weight:600;padding:4px 0;letter-spacing:.3px}
+.cal-grid .cal-day{padding:5px 0;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;transition:.12s;background:transparent;color:var(--muted);border:1px solid transparent}
+.cal-grid .cal-day:hover{background:var(--card2);border-color:var(--border)}
+.cal-grid .cal-day.today{color:var(--accent);border-color:var(--accent);font-weight:800}
+.cal-grid .cal-day.past{color:var(--muted);opacity:.4}
+.cal-grid .cal-day.future{color:var(--text)}
+.cal-grid .cal-day.od-active{background:linear-gradient(135deg,#ff5e7a20,#ff00ff20);border-color:var(--accent2);box-shadow:0 0 8px var(--accent2)}
+.cal-grid .cal-day.empty{cursor:default}
 
 /* ── THE GRID ── */
 .grid-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;overflow-x:auto}
@@ -116,10 +132,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* Week bands on header */
 .grid-wrap .wk1{background:#ff5e7a}.grid-wrap .wk2{background:#a855f7}.grid-wrap .wk3{background:#3b82f6}.grid-wrap .wk4{background:#eab308;color:#111}.grid-wrap .wk5{background:#22c55e}
 
-.g-cell{width:26px;height:26px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;font-weight:600;background:var(--bg);border:1.5px solid var(--border);transition:all .12s;margin:1px}
+.g-cell{border-radius:5px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;font-weight:600;background:var(--bg);border:1.5px solid var(--border);transition:all .12s;margin:1px;width:26px;height:26px}
 .g-cell:hover{border-color:var(--accent);transform:scale(1.12)}
 .g-cell.done{background:var(--green);border-color:var(--green-lt);color:var(--green-lt)}
 .g-cell.today{border-color:var(--accent);border-width:2px}
+.g-cell.od{box-shadow:0 0 8px var(--accent2);border-color:var(--accent2);animation:odPulse 1.5s ease-in-out infinite}
+.g-cell.od.done{box-shadow:0 0 12px var(--green-lt)}
+@keyframes odPulse{0%,100%{box-shadow:0 0 6px var(--accent2)}50%{box-shadow:0 0 16px var(--accent2),0 0 30px var(--accent)}}
+.grid-wrap th.od-head{box-shadow:inset 0 -3px 0 var(--accent2);animation:odGlow 1.5s ease-in-out infinite}
+@keyframes odGlow{0%,100%{filter:brightness(1)}50%{filter:brightness(1.3)}}
 .g-str{font-size:10px;color:var(--accent2);font-weight:700;min-width:28px}
 .g-pct{font-size:9px;color:var(--muted);font-weight:500;min-width:28px}
 .g-del{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;opacity:0;padding:2px;transition:.15s;font-family:'Inter',sans-serif;width:20px}
@@ -196,6 +217,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <button onclick="add()">+ Add</button>
   <button class="btn-sec" onclick="resetMonth()">🔄 Reset</button>
   <button class="btn-sec btn-danger" onclick="deleteAll()">🗑️ Delete all</button>
+  <button class="btn-overdrive" id="odBtn" onclick="toggleOverdrive()">⚡ Overdrive</button>
+</div>
+
+<div class="cal-wrap" id="calWrap">
+  <div class="cal-title">
+    <span>📅 <span id="calTitle"></span></span>
+    <span id="odStatus" style="font-size:9px;color:var(--accent2);font-weight:700"></span>
+  </div>
+  <div class="cal-grid" id="calGrid"></div>
 </div>
 
 <div id="gridContainer"><div class="empty">🎯<br><br>No habits yet<br><span style="font-size:11px;color:var(--muted)">Add your first habit above</span></div></div>
@@ -211,6 +241,8 @@ const DOW=['S','M','T','W','T','F','S']
 const WK_COLORS=['#ff5e7a','#a855f7','#3b82f6','#eab308','#22c55e']
 const EMOJIS=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️','🏃','🎸','🧪','🌱']
 const THEMES=[{id:'dark',label:'🌙 Dark'},{id:'midnight',label:'🔮 Midnight'},{id:'cyber',label:'💜 Cyber'},{id:'forest',label:'🌿 Forest'},{id:'ocean',label:'🌊 Ocean'},{id:'sunset',label:'🌅 Sunset'},{id:'light',label:'☀️ Light'}]
+const DOW_SHORT=['S','M','T','W','T','F','S']
+let overdriveWeek=-1
 
 function load(){
   try{const d=localStorage.getItem('ht4');if(d)data=JSON.parse(d)}catch(e){}
@@ -219,6 +251,7 @@ function load(){
   sel.innerHTML=THEMES.map(t=>`<option value="${t.id}">${t.label}</option>`).join('')
   const savedTheme=localStorage.getItem('ht_theme')||'dark'
   sel.value=savedTheme;document.documentElement.setAttribute('data-theme',savedTheme)
+  overdriveWeek=parseInt(localStorage.getItem('ht_od'))||-1
   if(!data.length){
     data=[
       {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
@@ -322,6 +355,24 @@ function render(){
 
   // Grid
   renderGrid(all,dInM,today,fDay)
+  renderCalendar()
+
+  // Overdrive button state
+  const odBtn=document.getElementById('odBtn')
+  const odStatus=document.getElementById('odStatus')
+  const fDay_=fdy(y,m)
+  const cw=new Date()
+  const curW=cw.getMonth()===m&&cw.getFullYear()===y?Math.floor((cw.getDate()-1+fDay_)/7):-1
+  if(overdriveWeek>=0){
+    odBtn.textContent='⚡ Overdrive ON'
+    odBtn.classList.add('active')
+    const wStart=overdriveWeek*7+1-fDay_,wEnd=Math.min(wStart+6,dInM)
+    odStatus.textContent=`🔥 Overdrive: Days ${Math.max(1,wStart)}-${wEnd} — GO HARD!`
+  }else{
+    odBtn.textContent='⚡ Overdrive'
+    odBtn.classList.remove('active')
+    odStatus.textContent=''
+  }
 }
 
 function renderGrid(all,dInM,today,fDay){
@@ -330,7 +381,7 @@ function renderGrid(all,dInM,today,fDay){
   for(let d=1;d<=dInM;d++){
     const w=Math.floor((d-1+fDay)/7),isT=ds(y,m,d)===today
     const wdNum=new Date(y,m,d).getDay()
-    h+=`<th class="wk${(w%5)+1}" style="${isT?'box-shadow:inset 0 -2px 0 #fff':''}"><span style="font-size:6px;opacity:.7">${DOW[wdNum]}</span><br><span style="font-size:12px;font-weight:800">${d}</span></th>`
+    h+=`<th class="wk${(w%5)+1}${w===overdriveWeek?' od-head':''}" style="${isT?'box-shadow:inset 0 -2px 0 #fff':''}"><span style="font-size:6px;opacity:.7">${DOW[wdNum]}</span><br><span style="font-size:12px;font-weight:800">${d}</span></th>`
   }
   h+=`<th style="background:var(--card2)!important">🔥</th><th style="background:var(--card2)!important">%</th><th></th></tr></thead><tbody>`
 
@@ -338,7 +389,8 @@ function renderGrid(all,dInM,today,fDay){
     h+=`<tr><td><span style="margin-right:5px">${ht.e||'🎯'}</span>${ht.n}</td>`
     for(let d=1;d<=dInM;d++){
       const dds=ds(y,m,d),done=ht.md.includes(dds),isT=dds===today
-      h+=`<td><div class="g-cell${done?' done':''}${isT?' today':''}" onclick="tog('${ht.n.replace(/'/g,"\\'")}','${dds}')"></div></td>`
+      const w=Math.floor((d-1+fDay)/7)
+      h+=`<td><div class="g-cell${done?' done':''}${isT?' today':''}${w===overdriveWeek?' od':''}" onclick="tog('${ht.n.replace(/'/g,"\\'")}','${dds}')"></div></td>`
     }
     h+=`<td><span class="g-str">${ht.str>0?'🔥'+ht.str:'—'}</span></td>`
     h+=`<td><span class="g-pct">${Math.round(ht.pct*100)}%</span></td>`
@@ -377,6 +429,43 @@ function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};render()}
 function navYear(d){y+=d;render()}
 function goMonth(v){m=parseInt(v);render()}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ht_theme',t)}
+
+function renderCalendar(){
+  const dInM=dim(y,m),fDay=fdy(y,m),today=td()
+  let html=''
+  for(const d of DOW_SHORT)html+=`<div class="cal-hdr">${d}</div>`
+  for(let i=0;i<fDay;i++)html+='<div class="cal-day empty"></div>'
+  for(let d=1;d<=dInM;d++){
+    const dds=ds(y,m,d),isT=dds===today
+    const w=Math.floor((d-1+fDay)/7)
+    const cls=`cal-day${isT?' today':d<=new Date().getDate()&&m===new Date().getMonth()&&y===new Date().getFullYear()?' past':d>new Date().getDate()||m!==new Date().getMonth()?' future':''}${w===overdriveWeek?' od-active':''}`
+    html+=`<div class="${cls}" onclick="if(${d}<=${dInM})navToDay(${d})">${d}</div>`
+  }
+  document.getElementById('calGrid').innerHTML=html
+  document.getElementById('calTitle').textContent=MON[m]+' '+y
+}
+
+function navToDay(d){
+  // Highlight the day in the grid by scrolling to it
+  const cells=document.querySelectorAll('.g-cell')
+  const idx=d-1
+  // Just a visual feedback - can't scroll easily, but we can toast
+  toast(`📅 Day ${d}`)
+}
+
+function toggleOverdrive(){
+  const fDay=fdy(y,m),dInM=dim(y,m)
+  // Current week of the month
+  const today=new Date()
+  const currentWeek=today.getMonth()===m&&today.getFullYear()===y
+    ?Math.floor((today.getDate()-1+fDay)/7)
+    :Math.floor((dInM-1+fDay)/7)
+  
+  if(overdriveWeek===currentWeek){overdriveWeek=-1}else{overdriveWeek=currentWeek}
+  localStorage.setItem('ht_od',overdriveWeek)
+  render()
+}
+
 function deleteAll(){
   if(!confirm('Delete ALL habits and data? This cannot be undone!'))return
   data=[];save();render();toast('🗑️ All habits deleted')
