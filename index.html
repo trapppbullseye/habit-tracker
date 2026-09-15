@@ -218,7 +218,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   <button onclick="add()">+ Add</button>
   <button class="btn-sec" onclick="resetMonth()">🔄 Reset</button>
   <button class="btn-sec btn-danger" onclick="deleteAll()">🗑️ Delete all</button>
-  <button class="btn-overdrive" id="odBtn" onclick="toggleOverdrive()">⚡ Overdrive</button>
+  <button class="btn-overdrive" id="odBtn" onclick="toggleOverdrive()">⚡ Reroll</button>
 </div>
 
 <div class="cal-wrap" id="calWrap">
@@ -253,6 +253,14 @@ function load(){
   const savedTheme=localStorage.getItem('ht_theme')||'dark'
   sel.value=savedTheme;document.documentElement.setAttribute('data-theme',savedTheme)
   overdriveWeek=parseInt(localStorage.getItem('ht_od'))||-1
+  // Auto-pick overdrive week if not set for this month
+  const odKey=`ht_od_${y}_${m}`
+  const savedOd=localStorage.getItem(odKey)
+  if(savedOd!==null){overdriveWeek=parseInt(savedOd)}else{
+    const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
+    overdriveWeek=Math.floor(Math.random()*wks)
+    localStorage.setItem(odKey,overdriveWeek)
+  }
   if(!data.length){
     data=[
       {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
@@ -365,12 +373,12 @@ function render(){
   const cw=new Date()
   const curW=cw.getMonth()===m&&cw.getFullYear()===y?Math.floor((cw.getDate()-1+fDay_)/7):-1
   if(overdriveWeek>=0){
-    odBtn.textContent='⚡ Overdrive ON'
+    odBtn.textContent='⚡ Reroll'
     odBtn.classList.add('active')
     const wStart=overdriveWeek*7+1-fDay_,wEnd=Math.min(wStart+6,dInM)
-    odStatus.textContent=`🔥 Overdrive: Days ${Math.max(1,wStart)}-${wEnd} — GO HARD!`
+    odStatus.textContent=`🔥 Overdrive: Days ${Math.max(1,wStart)}-${wEnd}`
   }else{
-    odBtn.textContent='⚡ Overdrive'
+    odBtn.textContent='⚡ Reroll'
     odBtn.classList.remove('active')
     odStatus.textContent=''
   }
@@ -426,9 +434,19 @@ function tog(n,date){
   if(!h.d)h.d=[]
   const j=h.d.indexOf(date);j>-1?h.d.splice(j,1):h.d.push(date);save();render()
 }
-function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};render()}
-function navYear(d){y+=d;render()}
-function goMonth(v){m=parseInt(v);render()}
+function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};pickOdWeek();render()}
+function navYear(d){y+=d;pickOdWeek();render()}
+function goMonth(v){m=parseInt(v);pickOdWeek();render()}
+function pickOdWeek(){
+  const odKey=`ht_od_${y}_${m}`
+  let saved=localStorage.getItem(odKey)
+  if(saved===null){
+    const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
+    saved=Math.floor(Math.random()*wks)
+    localStorage.setItem(odKey,saved)
+  }
+  overdriveWeek=parseInt(saved)
+}
 function setTheme(t){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('ht_theme',t)}
 
 function renderCalendar(){
@@ -461,16 +479,11 @@ function navToDay(d){
 }
 
 function toggleOverdrive(){
-  const fDay=fdy(y,m),dInM=dim(y,m)
-  // Current week of the month
-  const today=new Date()
-  const currentWeek=today.getMonth()===m&&today.getFullYear()===y
-    ?Math.floor((today.getDate()-1+fDay)/7)
-    :Math.floor((dInM-1+fDay)/7)
-  
-  if(overdriveWeek===currentWeek){overdriveWeek=-1}else{overdriveWeek=currentWeek}
-  localStorage.setItem('ht_od',overdriveWeek)
-  render()
+  const wks=Math.ceil((fdy(y,m)+dim(y,m))/7)
+  overdriveWeek=Math.floor(Math.random()*wks)
+  const odKey=`ht_od_${y}_${m}`
+  localStorage.setItem(odKey,overdriveWeek)
+  render();toast(`⚡ New overdrive week: W${overdriveWeek+1}`)
 }
 
 function deleteAll(){
