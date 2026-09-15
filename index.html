@@ -245,7 +245,14 @@ function load(){
   sel.value=savedTheme;document.documentElement.setAttribute('data-theme',savedTheme)
   pickOdWeekForMonth()
   if(!data.length){
-    data=[]
+    data=[
+      {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
+      {n:'Meditate',e:'🧘',d:[]},{n:'Journal',e:'📝',d:[]},{n:'Water',e:'💧',d:[]},
+      {n:'Sleep early',e:'🌙',d:[]},{n:'Eat clean',e:'🥦',d:[]},{n:'Focus block',e:'🎯',d:[]},
+      {n:'Walk outside',e:'🚶',d:[]},{n:'Game limit',e:'🎮',d:[]},{n:'Learn music',e:'🎵',d:[]},
+      {n:'Write',e:'✍️',d:[]},{n:'Cardio',e:'🏃',d:[]},{n:'Morning routine',e:'🌅',d:[]},
+      {n:'Clean room',e:'🧹',d:[]},{n:'No scroll',e:'📱',d:[]},{n:'Learn new',e:'🧪',d:[]}
+    ]
     save()
   }
   render()
