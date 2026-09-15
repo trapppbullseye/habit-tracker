@@ -8,7 +8,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0d0d1a;--card:#141428;--card2:#1a1a30;--accent:#ff5e7a;--accent2:#ff8a9e;--pink:#ff5e7a;--purple:#a855f7;--blue:#3b82f6;--yellow:#eab308;--green:#22c55e;--green-lt:#5cb885;--text:#f0f0f8;--muted:#5a5a78;--border:#252540;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.3)}
-body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px;overflow-x:hidden}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;padding:16px;overflow-x:hidden;user-select:none}
 .wrap{max-width:1200px;margin:0 auto}
 
 /* ── HEADER ── */
@@ -16,9 +16,12 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .top .brand{font-size:13px;color:var(--muted);letter-spacing:1px;font-weight:600}
 .top .brand span{color:var(--accent);font-weight:800}
 .top .controls{display:flex;align-items:center;gap:10px}
-.top .controls select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:14px;outline:none;cursor:pointer;font-family:'Inter',sans-serif}
-.top .controls button{background:var(--card);border:1px solid var(--border);color:var(--text);width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:14px;transition:.15s}
-.top .controls button:hover{border-color:var(--accent)}
+.top .controls select{background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:14px;outline:none;cursor:pointer;font-family:'Inter',sans-serif;appearance:none;min-width:120px;text-align:center}
+.top .controls select:focus{border-color:var(--accent)}
+.top .controls .year-btn{background:var(--card);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;min-width:50px;text-align:center;transition:.15s}
+.top .controls .year-btn:hover{border-color:var(--accent)}
+.top .controls .nav-btn{background:var(--card);border:1px solid var(--border);color:var(--text);width:30px;height:30px;border-radius:8px;cursor:pointer;font-size:16px;transition:.15s;display:grid;place-items:center}
+.top .controls .nav-btn:hover{border-color:var(--accent)}
 
 /* ── DASHBOARD GRID ── */
 .dash{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:12px}
@@ -28,36 +31,34 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 /* ── DONUT ── */
 .donut-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px 0}
 .donut{width:80px;height:80px;border-radius:50%;position:relative;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-.donut-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--green) 0deg 273deg, var(--border) 273deg 360deg)}
+.donut-ring{position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(var(--green) 0deg 0deg, var(--border) 0deg 360deg);transition:background .3s}
 .donut-inner{width:52px;height:52px;border-radius:50%;background:var(--card);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:var(--green);z-index:1}
 .donut-label{font-size:11px;color:var(--muted);margin-top:4px}
-
-/* ── LINE CHART ── */
-.line-chart{display:flex;align-items:flex-end;gap:3px;height:60px;padding:0 4px;margin-top:4px}
-.line-bar{flex:1;border-radius:3px 3px 0 0;min-height:4px;background:var(--green);opacity:.7;transition:height .4s}
-.line-bar:hover{opacity:1}
-
-/* ── BAR CHART (weekly) ── */
-.bar-chart{display:flex;align-items:flex-end;gap:2px;height:100px;padding:0 2px}
-.bar{flex:1;border-radius:3px 3px 0 0;min-height:2px;display:flex;flex-direction:column;align-items:center;position:relative}
-.bar .fill{width:100%;border-radius:3px 3px 0 0;transition:height .4s;min-height:2px}
-.bar .label{font-size:6px;color:var(--muted);margin-top:3px;text-align:center;width:100%;overflow:hidden}
 
 /* ── SCOREBOARD ── */
 .scoreboard{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:8px}
 .score-item{text-align:center;padding:8px;background:var(--card2);border-radius:8px}
-.score-item .num{font-size:20px;font-weight:800;color:var(--accent2)}
+.score-item .num{font-size:20px;font-weight:800;color:var(--accent2);transition:all .3s}
 .score-item .lbl{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:2px}
-.score-item .sub{font-size:8px;color:var(--muted);margin-top:1px}
 
-/* ── TOP HABITS LIST ── */
+/* ── BAR CHART ── */
+.bar-chart{display:flex;align-items:flex-end;gap:2px;height:80px;padding:0 2px}
+.bar{flex:1;border-radius:3px 3px 0 0;min-height:2px;display:flex;flex-direction:column;align-items:center;position:relative}
+.bar .fill{width:100%;border-radius:3px 3px 0 0;transition:height .4s;min-height:2px}
+.bar .label{font-size:6px;color:var(--muted);margin-top:3px}
+.sub-stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:10px}
+.sub-stat{text-align:center;padding:6px;background:var(--card2);border-radius:8px}
+.sub-stat .v{font-size:16px;font-weight:800;color:var(--accent2)}
+.sub-stat .l{font-size:8px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-top:1px}
+
+/* ── TOP HABITS ── */
 .top-list{display:flex;flex-direction:column;gap:6px}
 .top-item{display:flex;align-items:center;gap:8px}
-.top-item .rank{font-size:10px;font-weight:700;color:var(--muted);width:16px;text-align:right}
+.top-item .rank{font-size:10px;font-weight:700;color:var(--muted);width:16px;text-align:right;flex-shrink:0}
 .top-item .name{font-size:11px;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .top-item .tbar{flex:1;height:6px;background:var(--card2);border-radius:4px;overflow:hidden;max-width:100px}
-.top-item .tfill{height:100%;border-radius:4px;transition:width .4s}
-.top-item .tpct{font-size:10px;color:var(--muted);width:30px;text-align:right}
+.top-item .tfill{height:100%;border-radius:4px;background:var(--green);transition:width .4s}
+.top-item .tpct{font-size:10px;color:var(--muted);width:30px;text-align:right;flex-shrink:0}
 
 /* ── MIDDLE ROW ── */
 .mid{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:12px}
@@ -66,120 +67,107 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
 .weekly{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .weekly .title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:12px}
 .week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
-.week-day{text-align:center;padding:6px 2px;border-radius:6px;font-size:9px;background:var(--card2);transition:.15s}
+.week-day{text-align:center;padding:8px 2px;border-radius:8px;font-size:9px;background:var(--card2);border:1px solid transparent;transition:.15s;cursor:default}
 .week-day .wd{font-size:7px;color:var(--muted);text-transform:uppercase}
-.week-day .wn{font-size:13px;font-weight:700;margin-top:2px}
-.week-day.done{background:var(--green);color:var(--green-lt)}
-.week-day.done .wd{color:var(--green-lt)}
-.week-day.today{border:1px solid var(--accent)}
+.week-day .wn{font-size:16px;font-weight:700;margin-top:2px}
+.week-day.done{background:linear-gradient(135deg,var(--card2),#1a3a2a);border-color:var(--green-lt)}
+.week-day.done .wn{color:var(--green-lt)}
+.week-day.today{border-color:var(--accent)}
 
-/* ── RECENT ACTIVITY ── */
+/* ── RECENT ── */
 .recent{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px}
 .recent .title{font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);font-weight:600;margin-bottom:10px}
-.recent-list{display:flex;flex-direction:column;gap:6px}
-.recent-item{display:flex;align-items:center;gap:8px;font-size:11px;padding:4px 0;border-bottom:1px solid var(--border)}
+.recent-list{display:flex;flex-direction:column;gap:4px}
+.recent-item{display:flex;align-items:center;gap:8px;font-size:11px;padding:5px 0;border-bottom:1px solid var(--border)}
 .recent-item:last-child{border-bottom:none}
-.recent-item .e{width:18px;text-align:center}
+.recent-item .dot{width:6px;height:6px;border-radius:50%;background:var(--green);flex-shrink:0}
+.recent-item .rdate{color:var(--muted);min-width:40px;font-weight:600}
 
 /* ── ADD HABIT ── */
-.toolbar{display:flex;gap:8px;margin-bottom:12px}
+.toolbar{display:flex;gap:8px;margin-bottom:12px;margin-top:12px}
 .toolbar input{flex:1;background:var(--card);border:1px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;font-family:'Inter',sans-serif}
 .toolbar input:focus{border-color:var(--accent)}
 .toolbar button{background:var(--accent);border:none;border-radius:8px;padding:10px 20px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
 .toolbar button:hover{background:var(--accent2)}
-.toolbar .btn-sec{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-family:'Inter',sans-serif;transition:.2s}
+.toolbar .btn-sec{background:var(--card);border:1px solid var(--border);color:var(--text);padding:10px 16px;border-radius:8px;cursor:pointer;font-size:12px;font-family:'Inter',sans-serif;transition:.2s}
 .toolbar .btn-sec:hover{border-color:var(--accent)}
 
-/* ── THE GRID (calendar matrix) ── */
+/* ── THE GRID ── */
 .grid-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;overflow-x:auto}
-.grid-wrap table{width:100%;border-collapse:collapse;min-width:700px;font-size:12px}
-.grid-wrap th,.grid-wrap td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap}
-.grid-wrap th{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);padding:8px 4px;position:sticky;top:0;z-index:2}
-.grid-wrap td:first-child,.grid-wrap th:first-child{text-align:left;padding-left:14px;position:sticky;left:0;z-index:3;background:var(--card);min-width:140px;font-size:11px;font-weight:500}
-.grid-wrap tr:nth-child(even) td{background:rgba(255,255,255,.015)}
+.grid-wrap table{width:100%;border-collapse:collapse;min-width:650px;font-size:12px}
+.grid-wrap th,.grid-wrap td{padding:5px 3px;text-align:center;border-bottom:1px solid var(--border);white-space:nowrap}
+.grid-wrap th{font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#fff;padding:6px 3px;position:sticky;top:0;z-index:2}
+.grid-wrap th:first-child{background:var(--card)!important;color:var(--muted)!important}
+.grid-wrap td:first-child,.grid-wrap th:first-child{text-align:left;padding-left:12px;position:sticky;left:0;z-index:3;min-width:130px;background:var(--card);font-size:11px;font-weight:500}
+.grid-wrap tr:nth-child(even) td{background:rgba(255,255,255,.012)}
 .grid-wrap tr:nth-child(even) td:first-child{background:var(--card)}
 
-/* Week color bands on header */
-.grid-wrap .wk1{background:var(--pink)!important;color:#fff}
-.grid-wrap .wk2{background:var(--purple)!important;color:#fff}
-.grid-wrap .wk3{background:var(--blue)!important;color:#fff}
-.grid-wrap .wk4{background:var(--yellow)!important;color:#111}
-.grid-wrap .wk5{background:var(--green)!important;color:#fff}
+/* Week bands on header */
+.grid-wrap .wk1{background:#ff5e7a}.grid-wrap .wk2{background:#a855f7}.grid-wrap .wk3{background:#3b82f6}.grid-wrap .wk4{background:#eab308;color:#111}.grid-wrap .wk5{background:#22c55e}
 
-/* Day cells in grid */
-.g-cell{width:28px;height:28px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:10px;font-weight:500;background:var(--bg);border:1px solid var(--border);transition:all .12s;margin:1px}
-.g-cell:hover{border-color:var(--accent);transform:scale(1.1)}
+.g-cell{width:26px;height:26px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;font-size:9px;font-weight:600;background:var(--bg);border:1.5px solid var(--border);transition:all .12s;margin:1px}
+.g-cell:hover{border-color:var(--accent);transform:scale(1.12)}
 .g-cell.done{background:var(--green);border-color:var(--green-lt);color:var(--green-lt)}
 .g-cell.today{border-color:var(--accent);border-width:2px}
-
-/* Streak badge */
-.g-str{font-size:10px;color:var(--accent2);font-weight:700}
-.g-pct{font-size:9px;color:var(--muted);font-weight:500}
-.g-del{background:none;border:none;color:var(--muted);font-size:12px;cursor:pointer;opacity:0;padding:2px;transition:.15s;font-family:'Inter',sans-serif}
+.g-str{font-size:10px;color:var(--accent2);font-weight:700;min-width:28px}
+.g-pct{font-size:9px;color:var(--muted);font-weight:500;min-width:28px}
+.g-del{background:none;border:none;color:var(--muted);font-size:11px;cursor:pointer;opacity:0;padding:2px;transition:.15s;font-family:'Inter',sans-serif;width:20px}
 .grid-wrap tr:hover .g-del{opacity:.4}
 .g-del:hover{color:var(--accent)!important;opacity:1!important}
 
-/* Empty */
+/* ── EMPTY ── */
 .empty{text-align:center;padding:60px 20px;color:var(--muted);font-size:14px}
 .empty .big{font-size:40px;margin-bottom:12px}
 
-/* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .dash{grid-template-columns:1fr}
-  .mid{grid-template-columns:1fr}
-  .top{flex-direction:column;gap:12px}
-}
+/* ── TOAST ── */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:var(--card);color:var(--text);padding:10px 20px;border-radius:10px;border:1px solid var(--border);font-size:12px;font-weight:600;opacity:0;transition:opacity .3s;pointer-events:none;z-index:100}
+.toast.show{opacity:1}
+
+@media(max-width:900px){.dash{grid-template-columns:1fr}.mid{grid-template-columns:1fr}.top{flex-direction:column;gap:12px}}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<!-- Header -->
 <div class="top">
   <div class="brand">⚡ <span>HABIT</span> TRACKER</div>
   <div class="controls">
+    <button class="nav-btn" onclick="navMonth(-1)">‹</button>
     <select id="monthSelect" onchange="goMonth(this.value)"></select>
-    <button onclick="nav(-1)">‹</button>
-    <span id="yearLabel" style="font-size:15px;font-weight:700;min-width:40px;text-align:center"></span>
-    <button onclick="nav(1)">›</button>
+    <div class="year-btn" onclick="navYear(1)" id="yearLabel">2026</div>
+    <button class="nav-btn" onclick="navMonth(1)">›</button>
   </div>
 </div>
 
-<!-- Dashboard Charts Row -->
 <div class="dash">
-  <!-- Donut -->
   <div class="panel">
     <div class="title">📊 OVERALL PROGRESS</div>
     <div class="donut-wrap">
-      <div class="donut"><div class="donut-ring"></div><div class="donut-inner" id="donutPct">0%</div></div>
-      <div class="donut-label">daily completion</div>
+      <div class="donut"><div class="donut-ring" id="donutRing"></div><div class="donut-inner" id="donutPct">0%</div></div>
+      <div class="donut-label">this month</div>
     </div>
     <div class="scoreboard">
       <div class="score-item"><div class="num" id="completed">0</div><div class="lbl">done</div></div>
-      <div class="score-item"><div class="num" id="goal">0</div><div class="lbl">goal</div></div>
+      <div class="score-item"><div class="num" id="totalGoal">0</div><div class="lbl">total</div></div>
       <div class="score-item"><div class="num" id="leftCount">0</div><div class="lbl">left</div></div>
     </div>
   </div>
 
-  <!-- Bar Chart -->
   <div class="panel">
-    <div class="title">📈 DAILY TREND</div>
+    <div class="title">📈 WEEKLY TREND</div>
     <div class="bar-chart" id="barChart"></div>
-    <div class="scoreboard" style="margin-top:10px">
-      <div class="score-item"><div class="num" id="bestDay">—</div><div class="lbl">best day</div></div>
-      <div class="score-item"><div class="num" id="avgDay">0</div><div class="lbl">avg/day</div></div>
-      <div class="score-item"><div class="num" id="streakBest">0</div><div class="lbl">🔥 best streak</div></div>
+    <div class="sub-stats">
+      <div class="sub-stat"><div class="v" id="bestDay">—</div><div class="l">🔥 streak</div></div>
+      <div class="sub-stat"><div class="v" id="avgDay">0</div><div class="l">avg/day</div></div>
     </div>
   </div>
 
-  <!-- Top Habits -->
   <div class="panel">
     <div class="title">🏆 TOP HABITS</div>
-    <div class="top-list" id="topHabits">—</div>
+    <div class="top-list" id="topHabits"><div style="color:var(--muted);font-size:11px;padding:12px;text-align:center">No data</div></div>
   </div>
 </div>
 
-<!-- Middle Row -->
 <div class="mid">
   <div class="weekly">
     <div class="title">📅 THIS WEEK</div>
@@ -187,21 +175,20 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-h
   </div>
   <div class="recent">
     <div class="title">⚡ RECENT</div>
-    <div class="recent-list" id="recentList">—</div>
+    <div class="recent-list" id="recentList"><div style="color:var(--muted);font-size:11px">No activity</div></div>
   </div>
 </div>
 
-<!-- Toolbar -->
 <div class="toolbar">
   <input id="input" placeholder="Add new habit..." autocomplete="off" onkeydown="if(event.key==='Enter')add()">
   <button onclick="add()">+ Add</button>
-  <button class="btn-sec" onclick="resetMonth()">Reset month</button>
+  <button class="btn-sec" onclick="resetMonth()">🔄 Reset</button>
 </div>
 
-<!-- Grid -->
-<div id="gridContainer"><div class="empty">🎯<br><br>No habits yet</div></div>
+<div id="gridContainer"><div class="empty">🎯<br><br>No habits yet<br><span style="font-size:11px;color:var(--muted)">Add your first habit above</span></div></div>
 
 </div>
+<div class="toast" id="toast"></div>
 
 <script>
 // ─── STATE ───
@@ -209,22 +196,27 @@ let data=[], m=new Date().getMonth(), y=new Date().getFullYear()
 const MON=['January','February','March','April','May','June','July','August','September','October','November','December']
 const DOW=['S','M','T','W','T','F','S']
 const WK_COLORS=['#ff5e7a','#a855f7','#3b82f6','#eab308','#22c55e']
-const EMOJIS=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️','🏃','🎸','🧪','🌱','🎭','🎪','🧩','🎲','🏹','🥋']
+const EMOJIS=['🎯','💪','📖','🧠','🥦','💧','📝','🧘','🌙','🚶','⚡','🎨','🔥','⭐','🎵','🌅','🎮','📸','🎧','✍️','🏃','🎸','🧪','🌱']
 
-function load(){try{const d=localStorage.getItem('ht3');if(d)data=JSON.parse(d);else{seed();save()}}catch(e){seed();save()}render()}
-function save(){localStorage.setItem('ht3',JSON.stringify(data))}
-
-function seed(){
-  for(const n of ['Workout','Read','Code','Meditate','Journal','Water','Stretch']){
-    const d=[];for(let i=1;i<=new Date(y,m+1,0).getDate();i++){if(Math.random()>.3)d.push(ds(y,m,i))}
-    data.push({n,d,e:EMOJIS[data.length%EMOJIS.length]})
+function load(){
+  try{const d=localStorage.getItem('ht4');if(d)data=JSON.parse(d)}catch(e){}
+  if(!data.length){
+    data=[
+      {n:'Workout',e:'💪',d:[]},{n:'Read',e:'📖',d:[]},{n:'Code',e:'🧠',d:[]},
+      {n:'Meditate',e:'🧘',d:[]},{n:'Journal',e:'📝',d:[]},{n:'Water',e:'💧',d:[]},{n:'Stretch',e:'🤸',d:[]}
+    ]
+    const dim=new Date(y,m+1,0).getDate()
+    for(const h of data)for(let i=1;i<=dim;i++)if(Math.random()>.35)h.d.push(ds(y,m,i))
+    save()
   }
+  render()
 }
+function save(){localStorage.setItem('ht4',JSON.stringify(data))}
 
 function dim(y,m){return new Date(y,m+1,0).getDate()}
 function ds(y,m,d){return `${y}-${(m+1+'').padStart(2,'0')}-${(d+'').padStart(2,'0')}`}
 function td(){const d=new Date();return ds(d.getFullYear(),d.getMonth(),d.getDate())}
-function firstDay(y,m){return new Date(y,m,1).getDay()}
+function fdy(y,m){return new Date(y,m,1).getDay()}
 
 function streak(dates){
   if(!dates||!dates.length)return 0
@@ -233,198 +225,143 @@ function streak(dates){
     if(+x===+ck){c++;ck.setDate(ck.getDate()-1)}else if(+x<+ck)break}
   return c
 }
-function bestStreak(dates){
+function bstreak(dates){
   if(!dates||dates.length<2)return dates?.length||0
   const s=[...new Set(dates)].sort().map(d=>new Date(d).setHours(0,0,0,0))
   let b=1,c=1
   for(let i=1;i<s.length;i++){if((s[i]-s[i-1])/86400000===1){c++;b=Math.max(b,c)}else c=1}
   return b
 }
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
 
 function render(){
-  // Month dropdown
   const sel=document.getElementById('monthSelect')
   sel.innerHTML=MON.map((n,i)=>`<option value="${i}"${i===m?' selected':''}>${n}</option>`).join('')
   document.getElementById('yearLabel').textContent=y
 
   if(!data.length){renderEmpty();return}
 
-  const daysInMonth=dim(y,m),today=td(),dow0=firstDay(y,m)
-  const all=[],topHabits=[],dayCounts=[],dailyTotals=[]
+  const dInM=dim(y,m),today=td(),fDay=fdy(y,m)
+  const all=[],dayCnt=[],topH=[]
 
-  // Collect month data per habit
   for(const h of data){
     const dm=(h.d||[]).filter(d=>{const x=new Date(d);return x.getMonth()===m&&x.getFullYear()===y})
-    const pct=dm.length/daysInMonth
-    all.push({...h,monthDates:dm,pct,streak:streak(h.d||[]),best:bestStreak(h.d||[])})
-    topHabits.push({name:h.n,emoji:h.e,pct,count:dm.length})
-    for(let d=1;d<=daysInMonth;d++){
-      const idx=d-1
-      if(!dayCounts[idx])dayCounts[idx]=0
-      if(dm.includes(ds(y,m,d)))dayCounts[idx]++
-    }
+    const p=dInM>0?dm.length/dInM:0
+    all.push({...h,md:dm,pct:p,str:streak(h.d||[]),bst:bstreak(h.d||[])})
+    topH.push({n:h.n,e:h.e,pct:p,c:dm.length})
+    for(let d=1;d<=dInM;d++){const i=d-1;if(!dayCnt[i])dayCnt[i]=0;if(dm.includes(ds(y,m,d)))dayCnt[i]++}
+  }
+  topH.sort((a,b)=>b.pct-a.pct)
+
+  // Weekly bars
+  const wks=Math.ceil((fDay+dInM)/7),wd=[]
+  for(let w=0;w<wks;w++){
+    const s=w*7+1-fDay,e=Math.min(s+6,dInM);let t=0,cnt=0
+    for(let d=Math.max(1,s);d<=e;d++){t+=dayCnt[d-1]||0;cnt++}
+    wd.push({l:`W${w+1}`,v:cnt>0?Math.round(t/(data.length||1)*100/cnt)/10:0,c:WK_COLORS[w%5]})
   }
 
-  topHabits.sort((a,b)=>b.pct-a.pct)
+  // Stats
+  const tCI=all.reduce((a,h)=>a+h.md.length,0),tP=data.length*dInM
+  const ovPct=tP>0?Math.round(tCI/tP*100):0
 
-  // --- Weekly bar chart ---
-  const weeks=Math.ceil((dow0+daysInMonth)/7)
-  const weeklyData=[]
-  for(let w=0;w<weeks;w++){
-    const start=w*7+1-dow0,end=Math.min(start+6,daysInMonth)
-    let total=0,count=0
-    for(let d=Math.max(1,start);d<=end;d++){total+=dayCounts[d-1]||0;count++}
-    weeklyData.push({label:`W${w+1}`,value:count>0?Math.round(total/(all.length||1)*100/count*10)/10:0,color:WK_COLORS[w%5]})
-  }
+  document.getElementById('donutRing').style.background=`conic-gradient(#22c55e 0deg ${ovPct*3.6}deg, var(--border) ${ovPct*3.6}deg 360deg)`
+  document.getElementById('donutPct').textContent=ovPct+'%'
+  document.getElementById('completed').textContent=tCI
+  document.getElementById('totalGoal').textContent=tP
+  document.getElementById('leftCount').textContent=tP-tCI
+  document.getElementById('bestDay').textContent=Math.max(...all.map(h=>h.bst),0)
+  document.getElementById('avgDay').textContent=dInM>0?Math.round(tCI/(data.length||1)/dInM*100)+'%':0
 
-  // --- Overall stats ---
-  const totalCheckins=all.reduce((a,h)=>a+h.monthDates.length,0)
-  const totalPossible=all.length*daysInMonth
-  const overallPct=totalPossible>0?Math.round(totalCheckins/totalPossible*100):0
-  const goalsCompleted=all.filter(h=>h.pct>=.7).length
-
-  // --- Render weekly bar chart ---
-  const maxVal=Math.max(...weeklyData.map(w=>w.value),1)
-  document.getElementById('barChart').innerHTML=weeklyData.map(w=>
-    `<div class="bar"><div class="fill" style="height:${Math.round(w.value/maxVal*85)}%;background:${w.color};opacity:.8"></div><span class="label">${w.label}</span></div>`
+  // Bar chart
+  const mv=Math.max(...wd.map(w=>w.v),1)
+  document.getElementById('barChart').innerHTML=wd.map(w=>
+    `<div class="bar"><div class="fill" style="height:${Math.round(w.v/mv*65)}px;background:${w.c};opacity:.85"></div><span class="label">${w.l}</span></div>`
   ).join('')
 
-  // --- Donut ---
-  const donut=document.querySelector('.donut-ring')
-  donut.style.background=`conic-gradient(var(--green) 0deg ${Math.round(overallPct*3.6)}deg, var(--border) ${Math.round(overallPct*3.6)}deg 360deg)`
-  document.getElementById('donutPct').textContent=overallPct+'%'
-  document.getElementById('completed').textContent=totalCheckins
-  document.getElementById('goal').textContent=totalPossible
-  document.getElementById('leftCount').textContent=totalPossible-totalCheckins
+  // Top habits
+  document.getElementById('topHabits').innerHTML=topH.slice(0,8).map((h,i)=>
+    `<div class="top-item"><span class="rank">#${i+1}</span><span class="name">${h.e||'🎯'} ${h.n}</span><div class="tbar"><div class="tfill" style="width:${Math.round(h.pct*100)}%"></div></div><span class="tpct">${Math.round(h.pct*100)}%</span></div>`
+  ).join('')
 
-  // Best day / avg / best streak
-  const maxDay=Math.max(...dayCounts,0)
-  const avgPerDay=daysInMonth>0?(totalCheckins/(all.length||1)/daysInMonth*100).toFixed(1):0
-  document.getElementById('bestDay').textContent=maxDay
-  document.getElementById('avgDay').textContent=avgPerDay+'%'
-  document.getElementById('streakBest').textContent=Math.max(...all.map(h=>h.best),0)
+  // Week grid
+  const tr=new Date();tr.setDate(tr.getDate()-tr.getDay())
+  document.getElementById('weekGrid').innerHTML=[...Array(7)].map((_,i)=>{
+    const d=new Date(tr);d.setDate(tr.getDate()+i)
+    const dds=ds(d.getFullYear(),d.getMonth(),d.getDate()),isT=dds===td()
+    const cnt=all.filter(h=>h.md.includes(dds)).length
+    return `<div class="week-day${cnt>0?' done':''}${isT?' today':''}"><div class="wd">${DOW[d.getDay()]}</div><div class="wn">${cnt}</div></div>`
+  }).join('')
 
-  // --- Top habits ---
-  document.getElementById('topHabits').innerHTML=topHabits.slice(0,8).map((h,i)=>
-    `<div class="top-item">
-      <span class="rank">#${i+1}</span>
-      <span class="name">${h.emoji||'🎯'} ${h.name}</span>
-      <div class="tbar"><div class="tfill" style="width:${Math.round(h.pct*100)}%;background:var(--green)"></div></div>
-      <span class="tpct">${Math.round(h.pct*100)}%</span>
-    </div>`
-  ).join('')||'<div class="top-item" style="color:var(--muted)">No data yet</div>'
-
-  // --- Week grid (7 days) ---
-  const todayRef=new Date()
-  const weekStart=new Date(todayRef)
-  weekStart.setDate(todayRef.getDate()-todayRef.getDay())
-  let weekHtml=''
-  for(let i=0;i<7;i++){
-    const d=new Date(weekStart);d.setDate(weekStart.getDate()+i)
-    const dds=ds(d.getFullYear(),d.getMonth(),d.getDate())
-    const isToday=dds===td()
-    const count=all.filter(h=>h.monthDates.includes(dds)).length
-    const wd=d.getDay()
-    weekHtml+=`<div class="week-day${count>0?' done':''}${isToday?' today':''}">
-      <div class="wd">${DOW[wd]}</div>
-      <div class="wn">${count||''}</div>
-      <div style="font-size:7px;color:var(--muted);margin-top:1px">${d.getDate()}</div>
-    </div>`
+  // Recent
+  const rec=[]
+  for(let d=dInM;d>=1;d--){
+    const dds=ds(y,m,d),done=all.filter(h=>h.md.includes(dds))
+    if(done.length){rec.push({date:d,cnt:done.length});if(rec.length>=6)break}
   }
-  document.getElementById('weekGrid').innerHTML=weekHtml
+  document.getElementById('recentList').innerHTML=rec.length?rec.map(r=>`<div class="recent-item"><span class="dot"></span><span class="rdate">Day ${r.date}</span><span>${r.cnt} habits</span></div>`).join(''):'<div style="color:var(--muted);font-size:11px">No activity</div>'
 
-  // --- Recent activity ---
-  const recent=[]
-  for(let d=daysInMonth;d>=1;d--){
-    const dds=ds(y,m,d)
-    const done=all.filter(h=>h.monthDates.includes(dds))
-    if(done.length)recent.push({date:d,count:done.length,habits:done.slice(0,3).map(h=>`${h.emoji||'🎯'}`)})
-    if(recent.length>=6)break
-  }
-  document.getElementById('recentList').innerHTML=recent.map(r=>
-    `<div class="recent-item"><span class="e">✅</span> Day ${r.date} — ${r.count} habits <span style="font-size:10px;color:var(--muted)">${r.habits.join(' ')}</span></div>`
-  ).join('')||'<div style="color:var(--muted);font-size:11px">No recent activity</div>'
-
-  // --- The big grid ---
-  renderGrid(all,daysInMonth,today,dow0)
+  // Grid
+  renderGrid(all,dInM,today,fDay)
 }
 
-function renderGrid(all,daysInMonth,today,dow0){
-  let html='<div class="grid-wrap"><table><thead><tr><th>Habit</th>'
-
-  // Week color bands on headers
-  const weeks=Math.ceil((dow0+daysInMonth)/7)
-  for(let d=1;d<=daysInMonth;d++){
-    const w=Math.floor((d-1+dow0)/7)
-    const wc=`wk${(w%5)+1}`
-    const isToday=ds(y,m,d)===today
-    const wd=new Date(y,m,d).getDay()
-    html+=`<th class="${wc}"><span style="font-size:7px">${DOW[wd]}</span><span style="font-size:11px;display:block;margin-top:1px${isToday?';text-decoration:underline':''}">${d}</span></th>`
+function renderGrid(all,dInM,today,fDay){
+  const wks=Math.ceil((fDay+dInM)/7)
+  let h='<div class="grid-wrap"><table><thead><tr><th>Habit</th>'
+  for(let d=1;d<=dInM;d++){
+    const w=Math.floor((d-1+fDay)/7),isT=ds(y,m,d)===today
+    const wdNum=new Date(y,m,d).getDay()
+    h+=`<th class="wk${(w%5)+1}" style="${isT?'box-shadow:inset 0 -2px 0 #fff':''}"><span style="font-size:6px;opacity:.7">${DOW[wdNum]}</span><br><span style="font-size:12px;font-weight:800">${d}</span></th>`
   }
-  html+=`<th>🔥</th><th>%</th><th></th></tr></thead><tbody>`
+  h+=`<th style="background:var(--card2)!important">🔥</th><th style="background:var(--card2)!important">%</th><th></th></tr></thead><tbody>`
 
-  for(const h of all){
-    html+=`<tr><td><span style="font-size:13px;margin-right:5px">${h.emoji||'🎯'}</span>${h.n}</td>`
-    for(let d=1;d<=daysInMonth;d++){
-      const dds=ds(y,m,d),done=h.monthDates.includes(dds),isToday=dds===today
-      html+=`<td><div class="g-cell${done?' done':''}${isToday?' today':''}" onclick="tog('${encodeURIComponent(h.n)}','${dds}')"></div></td>`
+  for(const ht of all){
+    h+=`<tr><td><span style="margin-right:5px">${ht.e||'🎯'}</span>${ht.n}</td>`
+    for(let d=1;d<=dInM;d++){
+      const dds=ds(y,m,d),done=ht.md.includes(dds),isT=dds===today
+      h+=`<td><div class="g-cell${done?' done':''}${isT?' today':''}" onclick="tog('${ht.n.replace(/'/g,"\\'")}','${dds}')"></div></td>`
     }
-    html+=`<td><span class="g-str">${h.streak>0?'🔥'+h.streak:'—'}</span></td>`
-    html+=`<td><span class="g-pct">${Math.round(h.pct*100)}%</span></td>`
-    html+=`<td><button class="g-del" onclick="del('${encodeURIComponent(h.n)}')">✕</button></td>`
-    html+=`</tr>`
+    h+=`<td><span class="g-str">${ht.str>0?'🔥'+ht.str:'—'}</span></td>`
+    h+=`<td><span class="g-pct">${Math.round(ht.pct*100)}%</span></td>`
+    h+=`<td><button class="g-del" onclick="del('${ht.n.replace(/'/g,"\\'")}')">✕</button></td></tr>`
   }
-  html+='</tbody></table></div>'
-  document.getElementById('gridContainer').innerHTML=html
+  h+='</tbody></table></div>'
+  document.getElementById('gridContainer').innerHTML=h
 }
 
 function renderEmpty(){
-  document.getElementById('barChart').innerHTML=''
+  document.getElementById('donutRing').style.background=`conic-gradient(#22c55e 0deg 0deg, var(--border) 0deg 360deg)`
   document.getElementById('donutPct').textContent='0%'
-  document.getElementById('completed').textContent='0'
-  document.getElementById('goal').textContent='0'
-  document.getElementById('leftCount').textContent='0'
-  document.getElementById('bestDay').textContent='—'
-  document.getElementById('avgDay').textContent='0'
-  document.getElementById('streakBest').textContent='0'
-  document.getElementById('topHabits').innerHTML='<div style="color:var(--muted);font-size:11px">No habits yet</div>'
+  for(const id of ['completed','totalGoal','leftCount'])document.getElementById(id).textContent='0'
+  document.getElementById('bestDay').textContent='—';document.getElementById('avgDay').textContent='0'
+  document.getElementById('barChart').innerHTML=''
+  document.getElementById('topHabits').innerHTML='<div style="color:var(--muted);font-size:11px;padding:12px;text-align:center">No habits yet</div>'
   document.getElementById('weekGrid').innerHTML=''
   document.getElementById('recentList').innerHTML='<div style="color:var(--muted);font-size:11px">No activity</div>'
   document.getElementById('gridContainer').innerHTML='<div class="empty">🎯<br><br>No habits yet</div>'
-  const donut=document.querySelector('.donut-ring')
-  donut.style.background=`conic-gradient(var(--green) 0% 0%, var(--border) 0% 100%)`
 }
 
 function add(){
   const i=document.getElementById('input'),v=i.value.trim()
   if(!v)return
-  data.push({n:v,d:[],e:EMOJIS[data.length%EMOJIS.length]})
-  i.value='';save();render()
+  data.push({n:v,e:EMOJIS[data.length%EMOJIS.length],d:[]})
+  i.value='';save();render();toast(`✨ "${v}" added`)
 }
-
-function del(name){
-  const idx=data.findIndex(h=>h.n===name)
-  if(idx>-1){data.splice(idx,1);save();render()}
-}
-
-function tog(name,date){
-  const h=data.find(h=>h.n===name)
+function del(n){const i=data.findIndex(h=>h.n===n);if(i>-1){data.splice(i,1);save();render();toast('🗑️ Deleted')}}
+function tog(n,date){
+  const h=data.find(x=>x.n===n)
   if(!h)return
   if(!h.d)h.d=[]
-  const j=h.d.indexOf(date)
-  j>-1?h.d.splice(j,1):h.d.push(date)
-  save();render()
+  const j=h.d.indexOf(date);j>-1?h.d.splice(j,1):h.d.push(date);save();render()
 }
-
-function nav(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};render()}
+function navMonth(d){m+=d;if(m>11){m=0;y++}if(m<0){m=11;y--};render()}
+function navYear(d){y+=d;render()}
 function goMonth(v){m=parseInt(v);render()}
 function resetMonth(){
   if(!confirm('Reset all check-ins for this month?'))return
   for(const h of data)h.d=(h.d||[]).filter(d=>{const x=new Date(d);return x.getMonth()!==m||x.getFullYear()!==y})
-  save();render()
+  save();render();toast('🔄 Month reset')
 }
-
-// ─── INIT ───
 load()
 </script>
 </body>
